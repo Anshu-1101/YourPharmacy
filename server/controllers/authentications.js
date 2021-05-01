@@ -5,8 +5,6 @@ dotenv.config();
 
 const verifyUser = async (request, response) => {
 
-  console.log(request)
-  console.log(request.email)
   const token = request.cookies.token;
 
   try {

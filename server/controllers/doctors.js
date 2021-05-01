@@ -1,20 +1,20 @@
 const { response, request } = require('express');
 const mongoose = require('mongoose');
-const Product = require('../models/products.js')
+const Doctors = require('../models/doctor.js')
 const dotenv = require('dotenv');
 dotenv.config();
 
-const getProducts = async (request, response) => {
+const getDoctors = async (request, response) => {
     
     try{
         console.log("product request")
-        const Productdata = await Product.find();
-        const products = [];
+        const Doctordata = await Doctors.find();
+        const doctors = [];
 
-        for (let i=0; i<Productdata.length; i++){
-            products.push(Productdata[i]);
+        for (let i=0; i<Doctordata.length; i++){
+            doctors.push(Doctordata[i]);
         }
-        response.status(200).send(products);
+        response.status(200).send(doctors);
 
     }catch(error){
         console.log(error);
@@ -22,10 +22,10 @@ const getProducts = async (request, response) => {
     }
 }
 
-const addProduct = async (request, response) => {
+const addDoctors = async (request, response) => {
     try{
         const item = request.body;
-        Product.create({...item})
+        Doctors.create({...item})
         // Product.create({
         //     name: item.name, 
         //     composition: item.composition, 
@@ -41,4 +41,4 @@ const addProduct = async (request, response) => {
     }
 }
 
-module.exports = {getProducts, addProduct};
+module.exports = {getDoctors, addDoctors};

@@ -19,6 +19,9 @@ const productSchema = new mongoose.Schema({
     },
     quantity: {
         type: Number,
+    },
+    url:{
+        type: String,
     }
 })
 

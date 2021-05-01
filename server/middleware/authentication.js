@@ -13,7 +13,7 @@ const verifyToken = async (request, response, next) => {
 
     const decrypt = await jwt.verify(token, process.env.JWT_SECRET);
     request.email = decrypt.email;
-
+    request.logeddin = true;
     //await userLastVisit(decrypt.userName);
 
     next();

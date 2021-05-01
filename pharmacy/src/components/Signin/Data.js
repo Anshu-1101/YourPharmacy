@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 export const SignIn = () => {
 
 
-    const validEmailRegex = RegExp(
-        /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-      );
+    // const validEmailRegex = RegExp(
+    //     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+    //   );
 
 
     const [email, setEmail] = useState('');
