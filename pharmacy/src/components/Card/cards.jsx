@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({image, name, designation,specialisation, location}) => {
+const Card = ({image, name, designation,specialisation, location, fee}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -46,6 +46,7 @@ const Card = ({image, name, designation,specialisation, location}) => {
           {/* <div className="description">{specialisation}</div> */}
           <div className="Description">{designation}</div>
           <div className="Description">{location}</div>
+          <div className="Description">{fee}</div>
          
           <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
         Book Appointment

@@ -12,7 +12,7 @@ function  Doctors() {
   console.log("data: ",data)
 
   const fuse = new Fuse(data, {
-    keys: ["name", "designation", "specialisation"],
+    keys: ["name", "designation", "specialisation", "fee"],
   });
   
 
@@ -33,7 +33,7 @@ function  Doctors() {
     }
 
     const fuse = new Fuse(results, {
-      keys: ["name", "designation", "specialisation"],
+      keys: ["name", "designation", "specialisation", "fee"],
     });
 
     const result = fuse.search(pattern);
@@ -63,6 +63,7 @@ function  Doctors() {
             designation={item.designation}
             description={item.description}
             location={item.location}
+            fee={item.fee}
           />)
         }
       </div>
