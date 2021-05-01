@@ -7,6 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const SignIn = () => {
 
+
+    const validEmailRegex = RegExp(
+        /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+      );
+
+
     const [email, setEmail] = useState('');
     const handleEmailChange = (e) => {setEmail(e.target.value)} 
 
@@ -18,11 +24,17 @@ export const SignIn = () => {
 
     // const dispatch = useDispatch();
     const [submit, setSubmit] = useState(false);
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        
+        if (email.length > 0 && password.length > 0) {
+            event.preventDefault();
+        }
+        
         setSubmit(true);
+        console.log("Button was Pressed")
         // dispatch(login({email, password}));
         loginResource.mutate({email, password});
+        
     }
 
     if(loginResource.isSuccess && !loginResource.isError)

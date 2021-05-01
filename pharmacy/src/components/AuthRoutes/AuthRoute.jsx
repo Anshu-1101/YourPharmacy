@@ -8,7 +8,6 @@ const AuthRoute = props => {
   const {path} = props;
   
   const verifyUser = useQuery("verify-user",verifyUserAction);
-  console.log("verifyuser", verifyUser)
   if (!verifyUser.isLoading && !verifyUser.data.data.tokenVerified && (path !== '/' 
       && path !== '/signup'
       && path !== '/signin' 
@@ -18,7 +17,7 @@ const AuthRoute = props => {
       && path !== '/privacy-policy'
       && path !== '/terms-conditions' ) ) return <Redirect to="/signin" />;
       
-  if (!verifyUser.isLoading && verifyUser.data.data.tokenVerified && ( path == "/" || path == "/signin") ) return <Redirect to="/home" />
+  if (!verifyUser.isLoading && verifyUser.data.data.tokenVerified && ( path == "/" || path == "/signin" || path == "/signup") ) return <Redirect to="/home" />
 
   return (
       <>

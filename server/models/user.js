@@ -21,18 +21,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    userOTP : {
-        type : String,
-        default : '',
-    },
     userProfilePic : {
         filePath : {
             type : String,
-            default : "",
-        },
-        fileMimeType : {
-            type : String,
-            default : "",
+            default : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt_NZykul07nU3cliFuRZQr4_q-gOdkRTmRA&usqp=CAU",
         },
     },
     
@@ -41,29 +33,25 @@ const userSchema = new mongoose.Schema({
         default: false,
     },
     cart : [{
-        title : {
-            type : String,
+        _id : { type: String},
+        name :  {
+            type: String,
+            required: true,
+            trim: true,
         },
-        brand:{
+        composition:{
             type: String,
         },
-        quantity : {
-            type : String,
+        price: {
+            type: Number,
         },
-        url : {
-            type : String,
+        brand: {
+            type: {
+                name: String,
+            },
         },
-        itemLink : {
-            type : String,
-        },
-        itemTime : {
-            type : String,
-        },
-        itemDate : {
-            type : String,
-        },
-        price : {
-            type : Number,
+        quantity: {
+            type: Number,
         }
     }],
     cartViewed : {

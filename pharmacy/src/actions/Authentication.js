@@ -3,18 +3,8 @@ import {actionType} from '../constants/constants.js';
 
 export const login = (inputData) => api.logIn(inputData);
   
-export const signup = (inputData) => async (dispatch) => {
-  console.log(inputData)
-    try {
-      dispatch({ type: actionType.LOADING_DATA });
-        const { data } = await api.signUp(inputData);
-        dispatch({ type: actionType.SIGN_UP , data });
-    } 
-    catch (error) {
-        const err = {...error.response.data, error : true}
-        dispatch({ type : actionType.ERROR , data : err})
-    }
-};
+export const signup = (inputData) => api.signUp(inputData);
+
 export const verifyUserAction = () => {
   return api.verifyUser();
 }

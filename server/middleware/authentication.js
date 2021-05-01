@@ -12,7 +12,7 @@ const verifyToken = async (request, response, next) => {
     }
 
     const decrypt = await jwt.verify(token, process.env.JWT_SECRET);
-    request.user = decrypt.userName;
+    request.email = decrypt.email;
 
     //await userLastVisit(decrypt.userName);
 
