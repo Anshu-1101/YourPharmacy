@@ -1,25 +1,31 @@
 .Search {
-    width: 800px;
+    width: 300px;
     margin: 0 auto;
     position: relative;
     display: flex;
     padding: 10px;
+    /* border-radius: 15%; */
   }
   .SearchSpan {
     width: 15%;
     border: 1px solid #78AB46;
     background: #78AB46;
-    padding-top: 4px;
+    padding-top: 12px;
     text-align: center;
-    color: #fff;
+    color: whitesmoke;
     border-radius: 5px 0 0 5px;
     font-size: 20px;
+    /* border-radius: 15%; */
   }
   .SearchInput {
     width: 85%;
+    
     border: 3px solid #78AB46;
     border-left: none;
-    padding: 5px;
+    padding: 12px;
     border-radius: 0 5px 5px 0;
     outline: none;
+    /* border-radius: 15%; */
   }
+
+ 

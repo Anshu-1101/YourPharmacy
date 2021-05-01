@@ -1,14 +1,15 @@
 .Container {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height:auto;
   }
   
   .page{
     margin: 0;
-    height: 100vh;
+    height: auto;
     width: 100%;
     background-color: #2F4F2F;
   }

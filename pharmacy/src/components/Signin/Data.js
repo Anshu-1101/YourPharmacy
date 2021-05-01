@@ -15,7 +15,7 @@ export const SignIn = () => {
     const handlePasswordChange = (e) => {setPassword(e.target.value)} 
     const loginResource = useMutation((data) => login({...data}))
 
-
+     
     // const dispatch = useDispatch();
     const [submit, setSubmit] = useState(false);
     const handleSubmit = (e) => {
@@ -50,8 +50,6 @@ export const SignIn = () => {
                                 value={password}
                                 required
                             />
-
-
                             <FormButton onClick={handleSubmit}>Login</FormButton>
                             <Text>Forgot password</Text>
                         </Form>

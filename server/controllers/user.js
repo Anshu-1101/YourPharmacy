@@ -1,7 +1,7 @@
 const { response, request } = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const User = require('../models/user.js');
 const generateToken = require('../helpers/generatetoken.js');
