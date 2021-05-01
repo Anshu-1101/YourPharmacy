@@ -4,8 +4,7 @@ import{ SignIn} from './Data';
 
 const Signin = () => {
     return (
-        <>
-             
+        <>        
             <SignIn{...SignIn}/>
         </>
     )
