@@ -15,7 +15,7 @@ function Doctors() {
             "location" : "Sharda Hospital, Gorakhpur",
                      },
         {
-          "name": "dr. Radha Jeena"
+          "name": "dr. Radha Jeena",
           "image": "https://content3.jdmagicbox.com/comp/gorakhpur/b4/9999px551.x551.180421102256.e9b4/catalogue/dr-radha-jina-rapti-nagar-gorakhpur-gynaecologist-and-obstetrician-doctors-0nu7h28zzw-250.jpg",
           "specialisation":"MBBS, MD",
           "designation": "Gynocologist",
