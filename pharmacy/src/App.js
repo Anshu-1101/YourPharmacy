@@ -5,24 +5,31 @@ import {Navbar} from "./components";
 import GlobalStyle from './globalStyles';
 import Home from './pages/HomePage/Home';
 import Footer from './components/Footer/index';
-import Signin from './components/Signin/index';
-import Register from './components/Register';
+import signin from './components/Signin/index';
+import register from './components/Register';
+import AuthRoute from './components/AuthRoutes/AuthRoute'
+import {QueryClient, QueryClientProvider} from 'react-query';
+import Doctors from "./containers/doctorsPage/Doctors";
 
+const queryClient = new QueryClient()
 
 function App() {
   return (
-     <Router>
-       <GlobalStyle/>
-      <Navbar/>
-      <Switch>
-        <Route path="/" exact component={Home}/>
-        <Route path="/SignIn" exact component={Signin}/>
-        <Route path="/Register" exact component={Register}/>
-       
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <GlobalStyle/>
+        <Navbar/>
+        <Switch>
+          <AuthRoute path="/" exact component={Home}/>
+          <AuthRoute path="/home" exact component={Home}/>
+          <AuthRoute path="/signin" exact component={signin}/>
+          <AuthRoute path="/signup" exact component={register}/>
+          <AuthRoute path="/docters" exact component={Doctors}/>
 
-      </Switch>
-      <Footer/>
-     </Router>
+        </Switch>
+        <Footer/>
+      </Router>
+     </QueryClientProvider>
   );
 }
 

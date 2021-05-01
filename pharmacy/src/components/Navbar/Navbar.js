@@ -48,7 +48,7 @@ const Navbar = () => {
                 
                  
                     <NavItem>
-                        <NavLinks to='/'>Doctor Services</NavLinks>
+                        <NavLinks to='/docters'>Doctor Services</NavLinks>
                     </NavItem>
                  
                  
@@ -79,12 +79,12 @@ const Navbar = () => {
 
                      <NavItemBtn>
                          {button? (
-                             <NavBtnLink to="/register">
+                             <NavBtnLink to="/signup">
                                  <Button primary>Register</Button>
                              </NavBtnLink>
 
                          ):(
-                             <NavBtnLink to="/register">
+                             <NavBtnLink to="/signup">
                                  <Button  fontbig primary>
                                   Register
                                  </Button>
