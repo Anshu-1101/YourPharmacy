@@ -2,18 +2,51 @@
     flex: 0 1 300px;
     margin: 12px;
     overflow: hidden;
-    padding: 16px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05),
-      0 0px 10px rgba(0, 0, 0, 0.08);
+    padding: 14px;
+    box-shadow: 5px 6px 15px -2px rgb(160, 230, 157);
+-webkit-box-shadow: 5px 6px 15px -2px rgba(27,76,24,1);
+-moz-box-shadow: 5px 6px 15px -2px rgba(27,76,24,1);
     border-radius: 15px;
     flex-wrap: wrap;
-    min-width: 300px;
-    background-color: white;
+  width: calc(25% - 20px);
+  max-width: 100%;
+height: auto;
+    
+    
+    background-color: rgba(245, 245, 245, 0.973);
+
+
+  }
+
+  @media screen and (max-width: 480px) {
+    .CardWrapper{
+      max-width: 100%;
+      height: auto;
+    flex: 0 1 400px;
+    margin: 14px;
+
+    }
+    .ColImg {
+      width: 10%;
+      float: left;
+    }
+    .ColDetail {
+      padding: 15px 0 0 10px;
+      width: 90%;
+      float: left;
+    }
+    .Img {
+      height: 70px;
+      width: 70px;
+      padding: 5px;
+      border-radius: 0px;
+    }
+     
   }
   .Header {
     width: 100%;
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
   .ColImg {
     width: 30%;
@@ -26,18 +59,25 @@
   }
   .Img {
     height: 100px;
-    width: 100%;
+    width: 100px;
     padding: 5px;
-    border-radius: 13px;
+    border-radius: 0px;
   }
   .BookTitle {
     font-size: 20px;
   }
   .Description {
     color: #757575;
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom:10px;
   }
   .Link {
     font-size: 14px;
+  }
+
+  .Bookname{
+    text-transform: uppercase;
+  }
+  .description{
+    font-size: 12px;
   }

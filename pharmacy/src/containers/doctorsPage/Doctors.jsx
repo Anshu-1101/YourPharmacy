@@ -10,13 +10,46 @@ function Doctors() {
         {
             "name": "dr. RP Tripathi",
             "image": "https://shardahospital.org/uploads/doctor/doc_r_p_tripathi.jpg",
-            "designation": "Physcian",
-            "location" : "Gorakhpur, India"
-        },
+            "specialisation":"MBBS",
+            "designation": "General & Family Physician",
+            "location" : "Sharda Hospital, Gorakhpur",
+                     },
+        {
+          "name": "dr. Radha Jeena"
+          "image": "https://content3.jdmagicbox.com/comp/gorakhpur/b4/9999px551.x551.180421102256.e9b4/catalogue/dr-radha-jina-rapti-nagar-gorakhpur-gynaecologist-and-obstetrician-doctors-0nu7h28zzw-250.jpg",
+          "specialisation":"MBBS, MD",
+          "designation": "Gynocologist",
+          "location" : "Medical College, Gorakhpur",
+          
+      },
+      {
+        "name": "dr. Pankaj beniwal",
+        "image": "https://www.sehat.com/doctor_logos/1562840802yush-mathur.JPG",
+        "specialisation":"MBBS, MD, DM",
+        "designation": "Nephrology",
+        "location" : "SMS Hospital, Jaipur",
+         
+    },
+    {
+      "name": "dr. RP Tripathi",
+      "image": "https://shardahospital.org/uploads/doctor/doc_r_p_tripathi.jpg",
+      "specialisation":"MBBS",
+      "designation": "General & Family Physician",
+      "location" : "Sharda Hospital, Gorakhpur",
+       
+  },
+  {
+    "name": "dr. RP Tripathi",
+    "image": "https://shardahospital.org/uploads/doctor/doc_r_p_tripathi.jpg",
+    "specialisation":"MBBS",
+    "designation": "General & Family Physician",
+    "location" : "Sharda Hospital, Gorakhpur",
+    
+},
     ]
 
     const fuse = new Fuse(data, {
-        keys: ["name", "designation"],
+        keys: ["name", "designation", "specialisation"],
       });
 
     const [results, setResult] = useState(data);
@@ -28,7 +61,7 @@ function Doctors() {
         }
     
         const fuse = new Fuse(results, {
-          keys: ["title", "author"],
+           keys: ["name", "designation", "specialisation"],
         });
     
         const result = fuse.search(pattern);
@@ -54,8 +87,11 @@ function Doctors() {
                     <Card
                         image={item.image}
                         name={item.name}
+                        specialisation={item.specialisation}
                         designation={item.designation}
-                        location = {item.location} />)
+                        description={item.description}
+                        location = {item.location}
+                         />)
                 }
             </div>
         </div>

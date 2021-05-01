@@ -11,6 +11,7 @@ import AuthRoute from './components/AuthRoutes/AuthRoute'
 import {QueryClient, QueryClientProvider} from 'react-query';
 import Doctors from "./containers/doctorsPage/Doctors";
 
+
 const queryClient = new QueryClient()
 
 function App() {
