@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const { request, response } = require('express');
 const userRoutes = require('./routes/user.js');
+const doctorRoutes = require('./routes/doctors.js');
 const productRoutes = require('./routes/products.js');
 const authenticationRoutes = require('./routes/authentications.js');
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use('/user', userRoutes);
+app.use('/doctors', doctorRoutes);
 app.use('/products', productRoutes);
 app.use('/authentications', authenticationRoutes);
 

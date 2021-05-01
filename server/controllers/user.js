@@ -110,7 +110,7 @@ const logIn = async (request, response) => {
         const user = await User.findOne({email})
         if (!user)  response.status(404).send("User not found")
         response.status(200).send({
-          "pic" : user.userProfilePic,
+          "pic" : user.userProfilePic.filePath,
           "name": user.name
          })
         
@@ -119,4 +119,4 @@ const logIn = async (request, response) => {
     }
   }
 
-  module.exports = {logIn, signUp, addtoCart, getCart};
+  module.exports = {logIn, signUp, addtoCart, getCart, getNavbar};
