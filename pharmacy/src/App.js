@@ -11,6 +11,8 @@ import AuthRoute from './components/AuthRoutes/AuthRoute'
 import {QueryClient, QueryClientProvider} from 'react-query';
 import Doctors from "./containers/doctorsPage/Doctors";
 import Product from "./components/Products/Product";
+import Cart from "./components/Cart/Cart";
+import Appointments from "./components/Appointments/Appointment";
 
 
 const queryClient = new QueryClient()
@@ -28,6 +30,8 @@ function App() {
           <AuthRoute path="/signup" exact component={register}/>
           <AuthRoute path="/docters" exact component={Doctors}/>
           <AuthRoute path="/Product" exact component={Product}/>
+          <AuthRoute path="/Cart" exact component={Cart}/>
+          <AuthRoute path="/Appointments" exact component={Appointments}/>
 
         </Switch>
         <Footer/>

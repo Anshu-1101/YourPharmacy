@@ -4,10 +4,15 @@ import { FaTimes,FaBars } from 'react-icons/fa';
 import {Nav,NavbarContainer, NavLogo , NavIcon, MobileIcon , NavMenu, NavItem, NavLinks , NavBtnLink, NavItemBtn } from './NavbarElements';
 import {IconContext} from 'react-icons/lib'
 import { Button } from '../../globalStyles';
-// import Signin from '../../pages/signin';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const Navbar = () => {
+
+    const options = [
+        'one', 'two', 'three'
+      ];
+      const defaultOption = options[0];
     const [click, setClick]=useState(false)
     const [button, setButton]=useState(true)
     
@@ -54,13 +59,18 @@ const Navbar = () => {
                     <NavItem>
                         <NavLinks to='/Product'>Products</NavLinks>
                     </NavItem>
+
+                    <NavItem>
+                        <NavLinks to='/Appointments'>Appointments</NavLinks>
+                    </NavItem>
                 
                  
                     <NavItem>
-                        <NavLinks to='/'>Cart</NavLinks>
+                        <NavLinks to='/Cart'>Cart</NavLinks>
                     </NavItem>
+                    
                 
-                     <NavItemBtn>
+                     {/* <NavItemBtn>
                          {button? (
                              <NavBtnLink to="/Signin">
                                  <Button primary>Sign-in</Button>
@@ -91,6 +101,26 @@ const Navbar = () => {
                          )
                          }
                      </NavItemBtn>
+                       */}
+
+<Dropdown>
+     
+  <Dropdown.Toggle style={{padding:'12px', backgroundColor:"#76B947", AlignItems:'center',
+textDecoration:'none', width:'100px',   fontSize:'18px', outline:'none', border:'none',  }}>
+    Signin
+  </Dropdown.Toggle>
+  
+
+  <Dropdown.Menu style={{padding:'12px', backgroundColor:"#76B947", 
+textDecoration:'none', width:'100px',   fontSize:'18px', outline:'none', border:'none', position:'absolute',}} >
+    <Dropdown.Item style={{textDecoration:'none',textAlign:'center', color:'white', padding:'7px'}}  href="/Signup">Register</Dropdown.Item>
+    <br/>
+    
+    <br/>
+    <Dropdown.Item  style={{textDecoration:'none', textAlign:'center',color:'white', padding:'7px'}} href="/orders">Orders</Dropdown.Item>
+    
+  </Dropdown.Menu>
+</Dropdown>
                     </NavMenu>
                 
             </NavbarContainer>
