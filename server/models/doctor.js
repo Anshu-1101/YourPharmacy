@@ -24,7 +24,8 @@ const DoctorSchema = new mongoose.Schema({
     image: {
         type: String,
         default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt_NZykul07nU3cliFuRZQr4_q-gOdkRTmRA&usqp=CAU"
-    }
+    },
+    fee: {type: String}
     
 })
 
