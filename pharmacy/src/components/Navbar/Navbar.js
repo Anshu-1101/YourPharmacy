@@ -1,76 +1,78 @@
-import React, {useState, useEffect} from 'react'
-import { FaTimes,FaBars } from 'react-icons/fa';
- 
-import {Nav,NavbarContainer, NavLogo , NavIcon, MobileIcon , NavMenu, NavItem, NavLinks , NavBtnLink, NavItemBtn } from './NavbarElements';
-import {IconContext} from 'react-icons/lib'
-import { Button } from '../../globalStyles';
-import Dropdown from 'react-bootstrap/Dropdown';
+import React, { useState, useEffect } from "react";
+import { FaTimes, FaBars } from "react-icons/fa";
 
+import {
+  Nav,
+  NavbarContainer,
+  NavLogo,
+  NavIcon,
+  MobileIcon,
+  NavMenu,
+  NavItem,
+  NavLinks,
+  NavBtnLink,
+  NavItemBtn,
+} from "./NavbarElements";
+import { IconContext } from "react-icons/lib";
+import { Button } from "../../globalStyles";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const Navbar = () => {
+  const options = ["one", "two", "three"];
+  const defaultOption = options[0];
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
 
-    const options = [
-        'one', 'two', 'three'
-      ];
-      const defaultOption = options[0];
-    const [click, setClick]=useState(false)
-    const [button, setButton]=useState(true)
-    
-    const handleClick =()=> setClick(!click)
+  const handleClick = () => setClick(!click);
 
-    const showButton = ()=> {
-        if(window.innerWidth <=960){
-            setButton(false)
-        }else{
-            setButton(true)
-        }
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
     }
-    useEffect(()=>{
-        showButton()
-    },[])
+  };
+  useEffect(() => {
+    showButton();
+  }, []);
 
-    window.addEventListener('resize', showButton);
+  window.addEventListener("resize", showButton);
 
-
-    return (
-        <>
-        <IconContext.Provider value={{color:'#fff'}}>
+  return (
+    <>
+      <IconContext.Provider value={{ color: "#fff" }}>
         <Nav>
-            <NavbarContainer>
-                <NavLogo to="/">
-                    <NavIcon/>
-                    YOUR PHARMACY
-                </NavLogo>
+          <NavbarContainer>
+            <NavLogo to="/">
+              <NavIcon />
+              YOUR PHARMACY
+            </NavLogo>
 
-                <MobileIcon onClick={handleClick}>
-                    {click ? <FaTimes/>: <FaBars/>}
-                </MobileIcon>
-                <NavMenu onClick={handleClick} click={click}>
-                    <NavItem>
-                        <NavLinks to='/'>Home</NavLinks>
-                    </NavItem>
-                
-                 
-                    <NavItem>
-                        <NavLinks to='/docters'>Doctor Services</NavLinks>
-                    </NavItem>
-                 
-                 
-                    <NavItem>
-                        <NavLinks to='/Product'>Products</NavLinks>
-                    </NavItem>
+            <MobileIcon onClick={handleClick}>
+              {click ? <FaTimes /> : <FaBars />}
+            </MobileIcon>
+            <NavMenu onClick={handleClick} click={click}>
+              <NavItem>
+                <NavLinks to="/">Home</NavLinks>
+              </NavItem>
 
-                    <NavItem>
-                        <NavLinks to='/Appointments'>Appointments</NavLinks>
-                    </NavItem>
-                
-                 
-                    <NavItem>
-                        <NavLinks to='/Cart'>Cart</NavLinks>
-                    </NavItem>
-                    
-                
-                     {/* <NavItemBtn>
+              <NavItem>
+                <NavLinks to="/docters">Doctor Services</NavLinks>
+              </NavItem>
+
+              <NavItem>
+                <NavLinks to="/Product">Products</NavLinks>
+              </NavItem>
+
+              <NavItem>
+                <NavLinks to="/Appointments">Appointments</NavLinks>
+              </NavItem>
+
+              <NavItem>
+                <NavLinks to="/Cart">Cart</NavLinks>
+              </NavItem>
+
+              {/* <NavItemBtn>
                          {button? (
                              <NavBtnLink to="/Signin">
                                  <Button primary>Sign-in</Button>
@@ -103,33 +105,67 @@ const Navbar = () => {
                      </NavItemBtn>
                        */}
 
-<Dropdown>
-     
-  <Dropdown.Toggle style={{padding:'12px', backgroundColor:"#76B947", AlignItems:'center',
-textDecoration:'none', width:'100px',   fontSize:'18px', outline:'none', border:'none',  }}>
-    Signin
-  </Dropdown.Toggle>
-  
+              <Dropdown>
+                <Dropdown.Toggle
+                  style={{
+                    padding: "12px",
+                    backgroundColor: "#76B947",
+                    AlignItems: "center",
+                    textDecoration: "none",
+                    width: "100px",
+                    fontSize: "18px",
+                    outline: "none",
+                    border: "none",
+                  }}
+                >
+                  Signin
+                </Dropdown.Toggle>
 
-  <Dropdown.Menu style={{padding:'12px', backgroundColor:"#76B947", 
-textDecoration:'none', width:'100px',   fontSize:'18px', outline:'none', border:'none', position:'absolute',}} >
-    <Dropdown.Item style={{textDecoration:'none',textAlign:'center', color:'white', padding:'7px'}}  href="/Signup">Register</Dropdown.Item>
-    <br/>
-    
-    <br/>
-    <Dropdown.Item  style={{textDecoration:'none', textAlign:'center',color:'white', padding:'7px'}} href="/orders">Orders</Dropdown.Item>
-    
-  </Dropdown.Menu>
-</Dropdown>
-                    </NavMenu>
-                
-            </NavbarContainer>
+                <Dropdown.Menu
+                  style={{
+                    padding: "12px",
+                    backgroundColor: "#76B947",
+                    textDecoration: "none",
+                    width: "100px",
+                    fontSize: "18px",
+                    outline: "none",
+                    border: "none",
+                    position: "absolute",
+                  }}
+                >
+                  <Dropdown.Item
+                    style={{
+                      textDecoration: "none",
+                      textAlign: "center",
+                      color: "white",
+                      padding: "7px",
+                    }}
+                    href="/orders"
+                  >
+                    My Orders
+                  </Dropdown.Item>
+                  <br />
 
+                  <br />
+                  <Dropdown.Item
+                    style={{
+                      textDecoration: "none",
+                      textAlign: "center",
+                      color: "white",
+                      padding: "7px",
+                    }}
+                    href="/logout"
+                  >
+                    logout
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </NavMenu>
+          </NavbarContainer>
         </Nav>
-        </IconContext.Provider>
-            
-        </>
-    )
-}
+      </IconContext.Provider>
+    </>
+  );
+};
 
-export default Navbar
+export default Navbar;
