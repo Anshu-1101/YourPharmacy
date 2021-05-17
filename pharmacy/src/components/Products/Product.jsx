@@ -5,27 +5,29 @@ import "./Product.css";
 import React, { useEffect, useState } from "react";
 import {useQuery} from 'react-query'
 import {getProductAction} from '../../actions/products'
+import emptycart from './emptycart.svg';
 
 function Product() {
-  const data = useQuery([], async () => await getProductAction());
+  const data = useQuery("getProducts", async () => await getProductAction());
+  const [products, setProducts] = useState([])
+  const [search, finshsearch] = useState(false)
 
   useEffect(()=>{
     if (!data.isLoading && data.isSuccess)
       {
-        setResult(data.data.data)
-        console.log(data.data.data)
+        if (!search){
+          setProducts(data.data.data)
+          setResult(products)
+        }
       }
-  },[data])
-   
-  const fuse = new Fuse(data, {
-    keys: ["name", "brandname", "composition"],
-  });
+  }, [data])
 
   const [results, setResult] = useState([]);
 
   const searchData = (pattern) => {
     if (!pattern) {
-      setResult(data);
+      setResult(products);
+      finshsearch(false);
       return;
     }
 
@@ -35,33 +37,42 @@ function Product() {
 
     const result = fuse.search(pattern);
     const matches = [];
+    
     if (!result.length) {
       setResult([]);
+      
     } else {
-      result.forEach(({ item }) => {
+      result.forEach(({item}) => {
         matches.push(item);
       });
+      console.log("Result", result)
+      console.log("Match", matches)
+      console.log("products", results)
       setResult(matches);
+      console.log("products", results)
     }
+    
   };
 
   return (
     <div className="page">
       <SearchBar
         placeholder="search"
-        onChange={(e) => searchData(e.target.value)}
+        onChange={(e) => {finshsearch(true); searchData(e.target.value)}}
       />
       <div className="Container">
-        {results.map((item) => (
+        {(results)?results.map((item) => (
           <Card
             image={item.url}
             medname={item.name}
             medcomposition={item.composition}
             brandname={item.brandname}
-            // description={item.description}
             price={item.price}
           />
-        ))}
+        )): 
+        <img style={{height:'400px', width:'400px', justifyContent:'center', display:'block', marginLeft: 'auto',
+        marginRight: 'auto'}} src={emptycart}></img>
+        }
       </div>
     </div>
   );

@@ -5,6 +5,8 @@ export const login = (inputData) => api.logIn(inputData);
   
 export const signup = (inputData) => api.signUp(inputData);
 
+export const logout = () => api.logOut();
+
 export const verifyUserAction = () => {
   return api.verifyUser();
 }

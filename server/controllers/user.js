@@ -119,4 +119,15 @@ const logIn = async (request, response) => {
     }
   }
 
-  module.exports = {logIn, signUp, addtoCart, getCart, getNavbar};
+  const logOut = async (request, response) => {
+  
+    try {
+      response.clearCookie("token");
+      response.status(200).json({ message : "User has logged out" });
+    } catch (error) {
+      console.log(error);
+      response.status(500).json({ message : error });
+    }
+  }
+
+  module.exports = {logIn, signUp, addtoCart, getCart, getNavbar, logOut};

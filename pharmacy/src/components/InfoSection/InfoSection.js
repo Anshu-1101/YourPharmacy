@@ -2,11 +2,9 @@ import React from 'react'
 import{Link} from 'react-router-dom';
 import {Container, Button} from'../../globalStyles';
 import {InfoSec, InfoRow, InfoColumn, TextWrapper, TopLine, Heading, Subtitle, ImgWrapper,Img} from './InfoSectionelements';
-import photo from './image1.svg';
-import photo2 from './image2.svg';
 
 
-const InfoSection = ({primary,lightBg, imgStart, lightTopLine, lightTextDesc, buttonLabel, description, headline,lightText,topLine,img,alt,start}) => {
+const InfoSection = ({link, primary,lightBg, imgStart, lightTopLine, lightTextDesc, buttonLabel, description, headline,lightText,topLine,img,alt,start}) => {
     return (
         <>
         <InfoSec lightBg={lightBg}>
@@ -17,7 +15,7 @@ const InfoSection = ({primary,lightBg, imgStart, lightTopLine, lightTextDesc, bu
                              <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
                               <Heading lightText={lightText}>{headline}</Heading>
                               <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
-                              <Link to="/sign-up">
+                              <Link to={link}>
                                   <Button big fontBig primary={primary}>
                                       {buttonLabel}
 
@@ -28,7 +26,7 @@ const InfoSection = ({primary,lightBg, imgStart, lightTopLine, lightTextDesc, bu
                     </InfoColumn>
                     <InfoColumn>
                         <ImgWrapper start={start}>
-                            <Img src={photo} alt={alt}/>
+                            <Img src={img} alt={alt}/>
                         </ImgWrapper>
                     </InfoColumn>
                 </InfoRow>
