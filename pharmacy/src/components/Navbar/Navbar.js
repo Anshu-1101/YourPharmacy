@@ -19,6 +19,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Cookies from 'js-cookie';
 import {useQuery} from 'react-query'
 import {getNavbarAction} from '../../actions/user'
+// import Orders from '../Orders';
 
 const Navbar = () => {
   const options = ["one", "two", "three"];
@@ -76,7 +77,7 @@ const Navbar = () => {
               padding: "12px",
               backgroundColor: "#76B947",
               textDecoration: "none",
-              fontSize: "18px",
+              fontSize: "16px",
               outline: "none",
               border: "none",
             }}
@@ -88,7 +89,7 @@ const Navbar = () => {
                 color: "white",
                 padding: "7px",
               }}
-              href="/orders"
+              to="/orders"
             >
               My Orders
             </Dropdown.Item>

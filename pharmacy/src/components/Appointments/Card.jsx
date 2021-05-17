@@ -46,11 +46,12 @@ const Card = ({image,name,designation, specialisation, time, date}) => {
           <div className="Description">{specialisation}</div>
           <div className="Description">{time}</div>
           <div className="Description">{date}</div>
+        
          
           <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
 Payment Details
       </button>
-
+      
       <Modal
 
 style={{backdropFilter:'blur(5px)'}}
@@ -67,10 +68,13 @@ style={{backdropFilter:'blur(5px)'}}
 >
  <Fade in={open}>
    <div  style={{backgroundColor:'#78AB46', width:'400px',height:'auto', borderRadius:'20px'}} className={classes.paper}>
-     <h2 id="transition-modal-title">Appointment Details</h2>         
+     <h2 id="transition-modal-title">Appointment Details</h2> 
+             
    </div>
  </Fade>
 </Modal>
+
+
       
         </div>
       </div>

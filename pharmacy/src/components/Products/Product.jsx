@@ -45,11 +45,9 @@ function Product() {
       result.forEach(({item}) => {
         matches.push(item);
       });
-      console.log("Result", result)
-      console.log("Match", matches)
-      console.log("products", results)
+       
       setResult(matches);
-      console.log("products", results)
+       
     }
     
   };

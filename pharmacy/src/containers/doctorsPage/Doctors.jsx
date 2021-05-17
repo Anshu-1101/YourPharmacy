@@ -8,19 +8,16 @@ import {getDoctorAction} from '../../actions/doctors'
 
 function  Doctors() {
 
-  const data =  useQuery([], async ()=> await getDoctorAction())
-  console.log("data: ",data)
-
-  const fuse = new Fuse(data, {
-    keys: ["name", "designation", "specialisation", "fee"],
-  });
+  const data =  useQuery("doctor data", async ()=> await getDoctorAction())
+  const [products, setProducts] = useState([])
+  const [search, finshsearch] = useState(false)
   
 
   useEffect(()=>{
     if (!data.isLoading && data.isSuccess)
-      {
-        setResult(data.data.data)
-        console.log(data.data.data)
+      if (!search){
+        setProducts(data.data.data)
+        setResult(products)
       }
   },[data])
 
@@ -28,7 +25,8 @@ function  Doctors() {
 
   const searchData = (pattern) => {
     if (!pattern) {
-      setResult(data);
+      setResult(products);
+      finshsearch(false);
       return;
     }
 
@@ -52,7 +50,8 @@ function  Doctors() {
     <div className="page">
       <SearchBar
         placeholder="search"
-        onChange={(e) => searchData(e.target.value)}
+        onChange={(e) => {finshsearch(true); searchData(e.target.value)}}
+
       />
       <div className="Container">
         {results.map(item =>

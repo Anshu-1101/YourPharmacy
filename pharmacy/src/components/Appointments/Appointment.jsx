@@ -9,7 +9,8 @@ import nodata from './nodata.svg'
 
 function  Doctors() {
 
-  const data =  useQuery('appointment', async ()=> await getDoctorAction())
+  const data= [];
+   
   const [products, setProducts] = useState([])
   const [search, finshsearch] = useState(false)
   

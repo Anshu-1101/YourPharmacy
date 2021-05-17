@@ -43,12 +43,12 @@ const Card = ({image, medname, medcomposition,brandname, price}) => {
           <div className="Header">
             <div className="Bookname" style={{color:'green'}}>{medname}</div>
           </div>
-          <div className="description">{medcomposition}</div>
+          {/* <div className="description">{medcomposition}</div> */}
           <div className="Description">{brandname}</div>
-          <div className="Description">{price}</div>
+          {/* <div className="Description">{price}</div> */}
          
           <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
-        Remove Item
+        View Details
       </button>
      
       <Modal
@@ -67,7 +67,11 @@ const Card = ({image, medname, medcomposition,brandname, price}) => {
       >
         <Fade in={open}>
           <div  style={{backgroundColor:'#78AB46', width:'300px',height:'auto', borderRadius:'20px'}} className={classes.paper}>
-            <h2 id="transition-modal-title">Successfully Removed From Cart</h2>
+            <h2 id="transition-modal-title">
+            <div className="Bookname" style={{color:'green'}}>{medname}</div>
+            <div className="Description">{brandname}</div>
+            <div className="description">{medcomposition}</div>
+            <div className="Description">{price}</div></h2>
  
                      
           </div>
