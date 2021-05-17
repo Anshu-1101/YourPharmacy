@@ -1,135 +1,176 @@
-import React, {useState, useEffect} from 'react'
-import { FaTimes,FaBars } from 'react-icons/fa';
- 
-import {Nav,NavbarContainer, NavLogo , NavIcon, MobileIcon , NavMenu, NavItem, NavLinks , NavBtnLink, NavItemBtn } from './NavbarElements';
-import {IconContext} from 'react-icons/lib'
-import { Button } from '../../globalStyles';
-import Dropdown from 'react-bootstrap/Dropdown';
-
+import React, { useState, useEffect } from "react";
+import { FaTimes, FaBars } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
+import {
+  Nav,
+  NavbarContainer,
+  NavLogo,
+  NavIcon,
+  MobileIcon,
+  NavMenu,
+  NavItem,
+  NavLinks,
+  NavItemBtn,
+  NavBtnLink
+} from "./NavbarElements";
+import { IconContext } from "react-icons/lib";
+import { Button } from "../../globalStyles";
+import Dropdown from "react-bootstrap/Dropdown";
+import Cookies from 'js-cookie';
+import {useQuery} from 'react-query'
+import {getNavbarAction} from '../../actions/user'
 
 const Navbar = () => {
+  const options = ["one", "two", "three"];
+  const defaultOption = options[0];
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
 
-    const options = [
-        'one', 'two', 'three'
-      ];
-      const defaultOption = options[0];
-    const [click, setClick]=useState(false)
-    const [button, setButton]=useState(true)
+  const [name, setName] = useState((Cookies.get('token'))?"":null);
+  const nav = useQuery("navbar", () => getNavbarAction());
+  useEffect(() => {
     
-    const handleClick =()=> setClick(!click)
+    if (!nav.isLoading && nav.isSuccess)
+      {
+        setName(nav.data.data.name)
+        // console.log("data:",nav.data.data)
+      }
+    showButton();
+  }, [nav]);
 
-    const showButton = ()=> {
-        if(window.innerWidth <=960){
-            setButton(false)
-        }else{
-            setButton(true)
-        }
+
+  const handleClick = () => setClick(!click);
+
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
     }
-    useEffect(()=>{
-        showButton()
-    },[])
-
-    window.addEventListener('resize', showButton);
-
-
-    return (
-        <>
-        <IconContext.Provider value={{color:'#fff'}}>
-        <Nav>
-            <NavbarContainer>
-                <NavLogo to="/">
-                    <NavIcon/>
-                    YOUR PHARMACY
-                </NavLogo>
-
-                <MobileIcon onClick={handleClick}>
-                    {click ? <FaTimes/>: <FaBars/>}
-                </MobileIcon>
-                <NavMenu onClick={handleClick} click={click}>
-                    <NavItem>
-                        <NavLinks to='/'>Home</NavLinks>
-                    </NavItem>
-                
-                 
-                    <NavItem>
-                        <NavLinks to='/docters'>Doctor Services</NavLinks>
-                    </NavItem>
-                 
-                 
-                    <NavItem>
-                        <NavLinks to='/Product'>Products</NavLinks>
-                    </NavItem>
-
-                    <NavItem>
-                        <NavLinks to='/Appointments'>Appointments</NavLinks>
-                    </NavItem>
-                
-                 
-                    <NavItem>
-                        <NavLinks to='/Cart'>Cart</NavLinks>
-                    </NavItem>
-                    
-                
-                     {/* <NavItemBtn>
-                         {button? (
-                             <NavBtnLink to="/Signin">
-                                 <Button primary>Sign-in</Button>
-                             </NavBtnLink>
-
-                         ):(
-                             <NavBtnLink to="/Signin">
-                                 <Button  fontbig primary>
-                                 Sign-in
-                                 </Button>
-                             </NavBtnLink>
-                         )
-                         }
-                     </NavItemBtn>
-
-                     <NavItemBtn>
-                         {button? (
-                             <NavBtnLink to="/signup">
-                                 <Button primary>Register</Button>
-                             </NavBtnLink>
-
-                         ):(
-                             <NavBtnLink to="/signup">
-                                 <Button  fontbig primary>
-                                  Register
-                                 </Button>
-                             </NavBtnLink>
-                         )
-                         }
-                     </NavItemBtn>
-                       */}
-
-<Dropdown>
-     
-  <Dropdown.Toggle style={{padding:'12px', backgroundColor:"#76B947", AlignItems:'center',
-textDecoration:'none', width:'100px',   fontSize:'18px', outline:'none', border:'none',  }}>
-    Signin
-  </Dropdown.Toggle>
+  };
   
+  window.addEventListener("resize", showButton);
+  const userData = () => {
+      return (name!==null && name.length > 0)?
+        <Dropdown>
+          <Dropdown.Toggle
+            style={{
+              padding: "12px",
+              backgroundColor: "#76B947",
+              AlignItems: "center",
+              textDecoration: "none",
+              fontSize: "18px",
+              outline: "none",
+              border: "none",
+            }}
+          >
+              
+            <div>
+            <FaUserAlt style={{}}/>
+            <div style={{display: "inline-block", marginLeft:"10px"}}>{name}</div>
+            </div>
+          </Dropdown.Toggle>
 
-  <Dropdown.Menu style={{padding:'12px', backgroundColor:"#76B947", 
-textDecoration:'none', width:'100px',   fontSize:'18px', outline:'none', border:'none', position:'absolute',}} >
-    <Dropdown.Item style={{textDecoration:'none',textAlign:'center', color:'white', padding:'7px'}}  href="/Signup">Register</Dropdown.Item>
-    <br/>
-    
-    <br/>
-    <Dropdown.Item  style={{textDecoration:'none', textAlign:'center',color:'white', padding:'7px'}} href="/orders">Orders</Dropdown.Item>
-    
-  </Dropdown.Menu>
-</Dropdown>
-                    </NavMenu>
-                
-            </NavbarContainer>
-
-        </Nav>
-        </IconContext.Provider>
-            
+          <Dropdown.Menu
+            style={{
+              padding: "12px",
+              backgroundColor: "#76B947",
+              textDecoration: "none",
+              fontSize: "18px",
+              outline: "none",
+              border: "none",
+            }}
+          >
+            <Dropdown.Item
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                color: "white",
+                padding: "7px",
+              }}
+              href="/orders"
+            >
+              My Orders
+            </Dropdown.Item>
+            <br />
+            <Dropdown.Item
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                color: "white",
+                padding: "7px",
+              }}
+            >
+              <div style={{padding:0, margin: 0}} onClick={() => {}}>Logout</div>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        :<>
+        <NavItemBtn>
+          {button ? (
+            <NavBtnLink to="/signin">
+              <Button primary>Sign-in</Button>
+            </NavBtnLink>
+          ) : (
+            <NavBtnLink to="/signin">
+              <Button fontbig primary>
+                Sign-in
+              </Button>
+            </NavBtnLink>
+          )}
+        </NavItemBtn>
+        <NavItemBtn>
+          {button ? (
+            <NavBtnLink to="/signup">
+              <Button primary>Register</Button>
+            </NavBtnLink>
+          ) : (
+            <NavBtnLink to="/signup">
+              <Button fontbig primary>
+                Register
+              </Button>
+            </NavBtnLink>
+          )}
+        </NavItemBtn>
         </>
-    )
-}
+  }  
 
-export default Navbar
+  return (
+    <>
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <Nav>
+          <NavbarContainer>
+            <NavLogo to="/">
+              <NavIcon />
+              YOUR PHARMACY
+            </NavLogo>
+
+            <MobileIcon onClick={handleClick}>
+              {click ? <FaTimes /> : <FaBars />}
+            </MobileIcon>
+            <NavMenu click={click}>
+              <NavItem>
+                <NavLinks to="/">Home</NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks to="/doctors">Doctor Services</NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks to="/product">Products</NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks to="/appointments">Appointments</NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks to="/cart">Cart</NavLinks>
+              </NavItem>
+              {userData()}
+            </NavMenu>
+          </NavbarContainer>
+        </Nav>
+      </IconContext.Provider>
+    </>
+  );
+};
+
+export default Navbar;

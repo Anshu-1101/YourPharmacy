@@ -28,10 +28,10 @@ function App() {
           <AuthRoute path="/home" exact component={Home}/>
           <AuthRoute path="/signin" exact component={signin}/>
           <AuthRoute path="/signup" exact component={register}/>
-          <AuthRoute path="/docters" exact component={Doctors}/>
-          <AuthRoute path="/Product" exact component={Product}/>
-          <AuthRoute path="/Cart" exact component={Cart}/>
-          <AuthRoute path="/Appointments" exact component={Appointments}/>
+          <AuthRoute path="/doctors" exact component={Doctors}/>
+          <AuthRoute path="/product" exact component={Product}/>
+          <AuthRoute path="/cart" exact component={Cart}/>
+          <AuthRoute path="/appointments" exact component={Appointments}/>
 
         </Switch>
         <Footer/>

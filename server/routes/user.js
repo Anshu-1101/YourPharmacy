@@ -9,6 +9,8 @@ router.post("/signup", userOptions.signUp);
 router.post("/addtocart", verifyToken, userOptions.addtoCart)
 router.get("/getcart", verifyToken, userOptions.getCart)
 router.get("/getnavbar", verifyToken, userOptions.getNavbar)
+router.get("/logout", verifyToken, userOptions.logOut);
+
 // router.get("/logout", verifyToken, userOptions.logOut);
 
 module.exports = router;

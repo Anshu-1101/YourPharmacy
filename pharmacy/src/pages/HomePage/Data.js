@@ -1,4 +1,5 @@
-
+import photo from '../../images/image1.svg';
+import photo2 from '../../images/image2.svg';
 
 export const homeObjOne={
      lightBg: false,
@@ -11,11 +12,12 @@ export const homeObjOne={
       headline: "Your Pocket Pharmaceuticals" ,
       lightText:true,
       topLine:'Anywhere, Anytime, We are for you. ',
-      img:require('../../components/InfoSection/image1.svg'),
+      img:photo,
       alt:'Image',
       primary:true,
       darkText:false,
       dark:true,
+      link:"/product"
       
 
       
@@ -33,7 +35,8 @@ export const homeObjTwo={
        lightText: false,
        headline: "Choose Your Doctors" ,
        topLine:'Anywhere, Anytime, We are for you   ',
-       img:require('../../components/InfoSection/image2.svg'),
+       img:photo2,
+       link:"/doctors",
        alt:'Image',
         start:'true'
        
