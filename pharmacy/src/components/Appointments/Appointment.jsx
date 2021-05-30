@@ -6,10 +6,11 @@ import React, { useEffect, useState } from "react";
 import {useQuery} from 'react-query'
 import {getDoctorAction} from '../../actions/doctors'
 import nodata from './nodata.svg'
+import { getAppointment } from '../../actions/user';
 
 function  Doctors() {
 
-  const data= [];
+  const data = useQuery("getAppointment", async () => await getAppointment());
    
   const [products, setProducts] = useState([])
   const [search, finshsearch] = useState(false)
@@ -61,13 +62,13 @@ function  Doctors() {
       <div className="Container">
         {results.map(item =>
           <Card
-            image={item.image}
-            name={item.name}
-            specialisation={item.specialisation}
-            designation={item.designation}
-            description={item.description}
-            location={item.location}
-            fee={item.fee}
+            image={item.doctor.image}
+            name={item.doctor.name}
+            specialisation={item.doctor.specialisation}
+            designation={item.doctor.designation}
+            description={item.doctor.description}
+            location={item.doctor.location}
+            fee={item.doctor.fee}
             time={item.time}
             date={item.date}
           />)

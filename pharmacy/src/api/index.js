@@ -11,3 +11,7 @@ export const getProducts = () => axios.get(`${url}/products/getproducts`)
 export const getDoctors = () => axios.get(`${url}/doctors/getdoctors`)
 export const getCart = () => axios.get(`${url}/user/getcart`)
 export const addToCart = (id) => axios.post(`${url}/user/addtocart`, id)
+export const removeFromCart = (id) => axios.post(`${url}/user/removefromcart`, id)
+
+export const addAppointment = (id) => axios.post(`${url}/appointment/addappointment`, id)
+export const getAppointment = () => axios.get(`${url}/appointment/getappointment`)

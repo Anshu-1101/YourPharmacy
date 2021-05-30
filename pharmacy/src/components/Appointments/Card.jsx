@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Card = ({image,name,designation, specialisation, time, date}) => {
+  
+  
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   
@@ -48,9 +50,9 @@ const Card = ({image,name,designation, specialisation, time, date}) => {
           <div className="Description">{date}</div>
         
          
-          <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
+          {/* <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
 Payment Details
-      </button>
+      </button> */}
       
       <Modal
 

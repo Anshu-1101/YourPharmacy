@@ -5,6 +5,9 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import {FormWrap, Icon, FormButton,Text,FormH1,Form,FormInput, FormLabel, FormContent} from "../Register/RegisterElements";
+import Alert from 'react-popup-alert';
+import { addAppointment } from '../../actions/user';
+import {useMutation} from 'react-query';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -20,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({image, name, designation,specialisation, location, fee}) => {
+const Card = ({id, image, name, designation,specialisation, location, fee}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -32,7 +35,42 @@ const Card = ({image, name, designation,specialisation, location, fee}) => {
     setOpen(false);
   };
 
- 
+  const [time, setTime] = useState("");
+  const [date, setDate] = useState("");
+  const appointmentResource = useMutation((data) => addAppointment({...data}))
+
+  const handleConfirm =(e)=>{
+    e.preventDefault();
+    appointmentResource.mutate({"id": id, time, date});
+    console.log(time, date)
+    console.log(id)
+  }
+
+  const [alert, setAlert] = useState({
+    type: 'error',
+    text: 'This is a alert message',
+    show: false
+  })
+
+  const handleTime = (e) => { setTime(e.target.value) }
+  const handleDate = (e) => { setDate(e.target.value) }
+
+  function onCloseAlert() {
+    setAlert({
+      type: '',
+      text: '',
+      show: false
+    })
+  }
+
+  function onShowAlert(type) {
+    setAlert({
+      type: type,
+      text: 'Appointment is confirmed',
+      show: true
+    })
+  }
+
     return (
       <>
       <div className="CardWrapper">
@@ -43,7 +81,7 @@ const Card = ({image, name, designation,specialisation, location, fee}) => {
           <div className="Header">
             <div className="Bookname" style={{color:'green'}}>{name}, {specialisation}</div>
           </div>
-          {/* <div className="description">{specialisation}</div> */}
+          
           <div className="Description">{designation}</div>
           <div className="Description">{location}</div>
           <div className="Description">{fee}</div>
@@ -67,31 +105,40 @@ const Card = ({image, name, designation,specialisation, location, fee}) => {
       >
         <Fade in={open}>
           <div  style={{backgroundColor:'#78AB46', width:'500px',height:'auto', borderRadius:'20px'}} className={classes.paper}>
-            {/* <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p> */}
-
 <FormWrap>
                     <Icon  style={{textTransform:'uppercase', textAlign:'center'}} to="/">{name}</Icon>
                     <FormContent>
-                        <Form action="#">
+                        <Form  onSubmit={handleConfirm}  action="#" >
                             <FormH1>Enter your Details</FormH1>
-                            
-                            <FormLabel htmlFor='for' >Time</FormLabel>
-                            <FormInput type='time' required></FormInput>
-                            <FormLabel htmlFor='for' >Date</FormLabel>
-                            <FormInput type='date' required></FormInput>
-                            <FormButton type='submit'>Confirm Booking</FormButton>    
+                            <FormLabel htmlFor='for'  >Time</FormLabel>
+                            <FormInput name="time" type='time' required value={time} onChange={handleTime}step="900" ></FormInput>
+                            <FormLabel htmlFor='for'  >Date</FormLabel>
+                            <FormInput name="date" type='date' required value={date}  onChange={handleDate}></FormInput>
+                            <FormButton type='submit' onClick={() => onShowAlert('success')}>Confirm Booking</FormButton>  
+                            <Alert
+        header={""}
+        btnText={'Close'}
+        text={alert.text}
+        type={alert.type}
+        show={alert.show}
+        onClosePress={onCloseAlert}
+        pressCloseOnOutsideClick={true}
+        showBorderBottom={false}
+        alertStyles={{color:'white', textAlign:'center', padding:'12px'}}
+        headerStyles={{color:'white', textAlign:'center', padding:'12px'}}
+        textStyles={{color:'white', textAlign:'center', padding:'12px'}}
+        buttonStyles={{color:'red',textAlign:'center', paddingtop:'12px', backgroundColor:'black', textDecoration:'none'}}
+      />                    
                         </Form>
                     </FormContent>
                 </FormWrap>
           </div>
         </Fade>
+        
       </Modal>
+      
         </div>
       </div>
-
-       
-
       </>
 
 

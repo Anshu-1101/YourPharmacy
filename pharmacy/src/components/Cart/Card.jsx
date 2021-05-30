@@ -4,7 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
- 
+import {useQuery} from 'react-query'
+import {useMutation} from 'react-query';
+import { removeFromCartAction } from '../../actions/user';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -20,19 +22,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({image, medname, medcomposition,brandname, price}) => {
+const Card = ({_id, image, medname, medcomposition,brandname, price}) => {
+
+  const cartResource = useMutation((data) => removeFromCartAction({...data}))
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
   const handleRemove = () => {
-    
+    console.log(_id)
+    cartResource.mutate({'id': _id});
   }
   const handleOpen = () => {
+    handleRemove();
     setOpen(true);
+    
   };
 
   const handleClose = () => {
     setOpen(false);
+    window.location.reload();
   };
 
  

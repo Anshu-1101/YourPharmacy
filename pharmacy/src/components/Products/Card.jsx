@@ -36,12 +36,10 @@ const Card = ({_id, image, medname, medcomposition,brandname, price, addToCart})
   const handleAdd = () => {
     console.log(_id)
     cartResource.mutate({"id": _id});
+    handleOpen();
   };
 
-  
-
- 
-    return (
+  return (
       <>
       <div className="CardWrapper">
         <div className="ColImg">

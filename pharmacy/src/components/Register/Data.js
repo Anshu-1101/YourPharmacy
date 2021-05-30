@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { signup, login } from "../../actions/Authentication.js";
 import { FormContent, FormLabel } from "./RegisterElements";
+import Alert from 'react-popup-alert';
 import {
   Container,
   FormWrap,
@@ -53,6 +54,29 @@ export const Register = () => {
   if (loginResource.isSuccess && !loginResource.isError)
     window.location.reload();
 
+    const [alert, setAlert] = useState({
+      type: 'error',
+      text: 'This is a alert message',
+      show: false
+    })
+  
+    function onCloseAlert() {
+      setAlert({
+        type: '',
+        text: '',
+        show: false
+      })
+    }
+  
+    function onShowAlert(type) {
+      setAlert({
+        type: type,
+        text: 'You have been successfully registered!',
+        show: true
+      })
+    }
+
+
   return (
     <>
       <Container>
@@ -70,7 +94,21 @@ export const Register = () => {
               <FormLabel htmlFor="for">Phone number</FormLabel>
               <FormInput type="phone number" onChange={handlePhoneNumberChange} required></FormInput>
 
-              <FormButton type="submit" onClick={handleSubmit}>Register</FormButton>
+              <FormButton type="submit" onClick={() => onShowAlert('success'), handleSubmit}>Register</FormButton>
+              <Alert
+        header={""}
+        btnText={'Close'}
+        text={alert.text}
+        type={alert.type}
+        show={alert.show}
+        onClosePress={onCloseAlert}
+        pressCloseOnOutsideClick={true}
+        showBorderBottom={false}
+        alertStyles={{color:'white', textAlign:'center', padding:'12px'}}
+        headerStyles={{color:'white', textAlign:'center', padding:'12px'}}
+        textStyles={{color:'white', textAlign:'center', padding:'12px'}}
+        buttonStyles={{color:'red',textAlign:'center', paddingtop:'12px', backgroundColor:'black', textDecoration:'none'}}
+      /> 
             </Form>
           </FormContent>
         </FormWrap>

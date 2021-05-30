@@ -10,6 +10,7 @@ const userRoutes = require('./routes/user.js');
 const doctorRoutes = require('./routes/doctors.js');
 const productRoutes = require('./routes/products.js');
 const authenticationRoutes = require('./routes/authentications.js');
+const appointmentRoutes = require('./routes/appointments.js')
 
 const app = express();
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use('/user', userRoutes);
 app.use('/doctors', doctorRoutes);
 app.use('/products', productRoutes);
+app.use('/appointment', appointmentRoutes);
 app.use('/authentications', authenticationRoutes);
 
 const PORT = process.env.PORT;

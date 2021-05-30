@@ -109,7 +109,7 @@ const Navbar = () => {
                 padding: "7px",
               }}
             >
-              <div style={{padding:0, margin: 0}} onClick={() => dispatch(logout())}>Logout</div>
+              <div style={{padding:0, margin: 0}} onClick={() => {dispatch(logout()); window.location.reload()}}>Logout</div>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

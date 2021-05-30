@@ -63,6 +63,7 @@ function  Doctors() {
             description={item.description}
             location={item.location}
             fee={item.fee}
+            id={item._id}
           />)
         }
       </div>

@@ -39,12 +39,6 @@ const userSchema = new mongoose.Schema({
             default: 1
         }
     }],
-    appointemnts: [
-        {
-            id : String,
-            date: String
-        }
-    ],
     cartViewed : {
         type : Boolean,
         default : false,

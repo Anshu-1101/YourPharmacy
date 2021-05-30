@@ -13,7 +13,7 @@ dotenv.config();
 const logIn = async (request, response) => {
   
     const { email, password } = request.body;
-    console.log("got data", email, password);
+    
     try {
   
       if(email === "" || password === "")
@@ -45,7 +45,7 @@ const logIn = async (request, response) => {
   const signUp = async (request, response) => {
 
     const {email, password, phoneNumber, name} = request.body;
-    console.log(request.body)
+    
     try{
         var userDetails = await User.findOne({ email })
         if (userDetails){
@@ -116,7 +116,7 @@ const logIn = async (request, response) => {
       const email = request.email
       const user = await User.findOne({email})
       if (!user) response.status(404).send("User not Found")
-
+      console.log(request.body)
       const {id} = request.body;
       user.cart = user.cart.filter((item) => {
         return (item.id!= id)
@@ -142,6 +142,7 @@ const logIn = async (request, response) => {
         response.status(500).send("request Failed: "+error);
     }
   }
+
 
   const getNavbar = async (request, response) => {
     try{

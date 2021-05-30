@@ -7,7 +7,7 @@ dotenv.config();
 const getDoctors = async (request, response) => {
     
     try{
-        console.log("product request")
+        
         const Doctordata = await Doctors.find();
         const doctors = [];
 
