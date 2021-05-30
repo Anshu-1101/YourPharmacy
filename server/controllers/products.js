@@ -7,7 +7,6 @@ dotenv.config();
 const getProducts = async (request, response) => {
     
     try{
-        console.log("product request")
         const Productdata = await Product.find();
         const products = [];
 

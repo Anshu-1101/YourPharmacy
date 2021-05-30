@@ -59,15 +59,17 @@ function Product() {
         onChange={(e) => {finshsearch(true); searchData(e.target.value)}}
       />
       <div className="Container">
-        {(results)?results.map((item) => (
+        {(results)?results.map((item) => {
+          return (
           <Card
+            _id = {item._id}
             image={item.url}
             medname={item.name}
             medcomposition={item.composition}
             brandname={item.brandname}
             price={item.price}
           />
-        )): 
+        )}): 
         <img style={{height:'400px', width:'400px', justifyContent:'center', display:'block', marginLeft: 'auto',
         marginRight: 'auto'}} src={emptycart}></img>
         }

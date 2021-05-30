@@ -33,27 +33,18 @@ const userSchema = new mongoose.Schema({
         default: false,
     },
     cart : [{
-        _id : { type: String},
-        name :  {
-            type: String,
-            required: true,
-            trim: true,
-        },
-        composition:{
-            type: String,
-        },
-        price: {
-            type: Number,
-        },
-        brand: {
-            type: {
-                name: String,
-            },
-        },
+        id : String,
         quantity: {
             type: Number,
+            default: 1
         }
     }],
+    appointemnts: [
+        {
+            id : String,
+            date: String
+        }
+    ],
     cartViewed : {
         type : Boolean,
         default : false,

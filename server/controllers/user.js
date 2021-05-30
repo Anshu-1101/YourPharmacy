@@ -74,31 +74,70 @@ const logIn = async (request, response) => {
   const addtoCart = async (request, response) => {
     try{
         const email = request.email;
+        
         const user = await User.findOne({email})
-
         if (!user)  response.status(404).send("User not found")
+        
+        const id = request.body.id;
+        const product = await Product.findById(id)
+        if (product.quantity == 0) {
+          product.close()
+          return
+        }
+        
+        var isPresent = false
+        for(let i=0; i<user.cart.length; i++){
+          let data = user.cart[i];
+          console.log(data, data.id == id)
+          if (data.id == id){
+             user.cart[i].quantity++;
+             user.save();
+             response.status(200).send("Quantity increased!");
+             return;
+          }
 
-        const {productid} = request.body.product;
-        const product = await Product.findById(productid)
-        console.log(product)
-        user.cart.push(product);
+        }
 
-        const status = await user.save();
-        // const status = await User.findByIdAndUpdate(user._id, item, {new: true})
-        console.log(status)
-        response.status(200).send("Added to card successfully");
+        const re = {id, quantity:1}
+        user.cart.push(re);
+        const data = await user.save();
+        
+        response.status(200).send("Added to cart successfully");
+
     }catch(error){
+        console.log(error)
         response.status(500).send("request Failed: "+error);
     }
   }
   
+  const removeFromCart = async (request, response) => {
+    try{
+      
+      const email = request.email
+      const user = await User.findOne({email})
+      if (!user) response.status(404).send("User not Found")
+
+      const {id} = request.body;
+      user.cart = user.cart.filter((item) => {
+        return (item.id!= id)
+      })
+      await user.save()
+      response.status(200).send("Removed From Cart successfully")
+
+    }catch(error){
+      response.status(200).send("Request Failed " + error);
+    }
+  }
+
   const getCart = async (request, response) => {
     try{
         const email = request.email;
         const user = await User.findOne({email})
         if (!user)  response.status(404).send("User not found")
-
-        response.status(200).send(user.cart);
+        var product = await Promise.all(user.cart.map(async (data)=>{
+          return await Product.findById(data.id)
+        }))
+        response.status(200).send(product);
     }catch(error){
         response.status(500).send("request Failed: "+error);
     }
@@ -130,4 +169,4 @@ const logIn = async (request, response) => {
     }
   }
 
-  module.exports = {logIn, signUp, addtoCart, getCart, getNavbar, logOut};
+  module.exports = {logIn, signUp, addtoCart, getCart, getNavbar, removeFromCart, logOut};

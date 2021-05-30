@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const Card = ({image,name,designation, specialisation, time, date}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-
+  
   const handleOpen = () => {
     setOpen(true);
   };

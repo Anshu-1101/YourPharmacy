@@ -24,6 +24,9 @@ const Card = ({image, medname, medcomposition,brandname, price}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
+  const handleRemove = () => {
+    
+  }
   const handleOpen = () => {
     setOpen(true);
   };

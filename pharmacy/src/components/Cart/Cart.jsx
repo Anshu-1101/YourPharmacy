@@ -4,11 +4,11 @@ import Fuse from "fuse.js";
 import "./Cart.css";
 import React, { useEffect, useState } from "react";
 import {useQuery} from 'react-query'
-import {getProductAction} from '../../actions/products'
+import {getCartAction} from '../../actions/user'
 import emptycart from './emptycart.svg';
 
 function Cart() {
-  const data = useQuery("cartdata", async () => await getProductAction());
+  const data = useQuery("cartdata", async () => await getCartAction());
   const [products, setProducts] = useState([])
   const [search, finshsearch] = useState(false)
 

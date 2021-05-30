@@ -19,9 +19,16 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Cookies from 'js-cookie';
 import {useQuery} from 'react-query'
 import {getNavbarAction} from '../../actions/user'
+import { logout } from "../../actions/Authentication";
+import {useDispatch} from 'react-redux'
+
 // import Orders from '../Orders';
 
 const Navbar = () => {
+
+  const dispatch = useDispatch();
+
+
   const options = ["one", "two", "three"];
   const defaultOption = options[0];
   const [click, setClick] = useState(false);
@@ -41,7 +48,7 @@ const Navbar = () => {
 
 
   const handleClick = () => setClick(!click);
-
+  
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(false);
@@ -51,7 +58,7 @@ const Navbar = () => {
   };
   
   window.addEventListener("resize", showButton);
-  const userData = () => {
+  const UserData = () => {
       return (name!==null && name.length > 0)?
         <Dropdown>
           <Dropdown.Toggle
@@ -102,7 +109,7 @@ const Navbar = () => {
                 padding: "7px",
               }}
             >
-              <div style={{padding:0, margin: 0}} onClick={() => {}}>Logout</div>
+              <div style={{padding:0, margin: 0}} onClick={() => dispatch(logout())}>Logout</div>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -165,7 +172,7 @@ const Navbar = () => {
               <NavItem>
                 <NavLinks to="/cart">Cart</NavLinks>
               </NavItem>
-              {userData()}
+              {UserData()}
             </NavMenu>
           </NavbarContainer>
         </Nav>

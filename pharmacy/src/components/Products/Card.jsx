@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import {FormWrap, Icon, FormButton,Text,FormH1,Form,FormInput, FormLabel, FormContent} from "../Register/RegisterElements";
+import {useMutation} from 'react-query';
+import { addToCartAction } from '../../actions/user';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -20,10 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({image, medname, medcomposition,brandname, price}) => {
+const Card = ({_id, image, medname, medcomposition,brandname, price, addToCart}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-
+  const cartResource = useMutation((data) => addToCartAction({...data}))
   const handleOpen = () => {
     setOpen(true);
   };
@@ -31,6 +32,13 @@ const Card = ({image, medname, medcomposition,brandname, price}) => {
   const handleClose = () => {
     setOpen(false);
   };
+  
+  const handleAdd = () => {
+    console.log(_id)
+    cartResource.mutate({"id": _id});
+  };
+
+  
 
  
     return (
@@ -47,7 +55,7 @@ const Card = ({image, medname, medcomposition,brandname, price}) => {
           <div className="Description">{brandname}</div>
           <div className="Description">{price}</div>
          
-          <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
+          <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleAdd}>
         Add To Cart
       </button>
       <Modal
