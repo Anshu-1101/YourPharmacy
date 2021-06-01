@@ -1,10 +1,14 @@
 const User = require('../models/user.js');
 const Appointment = require('../models/appointment.js')
 const Doctor = require('../models/doctor.js')
+const mongoose = require('mongoose');
 
 
 const getAppointment = async (request, response) => {
     try{
+        const session = await mongoose.startSession();
+        session.startTransaction();
+
         const email = request.email;
         const user = await User.findOne({email})
         if (!user) return response.status(404).send( "User not found!" + error )
@@ -18,6 +22,7 @@ const getAppointment = async (request, response) => {
           }))
           console.log(appointments)
         response.status(200).send(appointments);
+        session.endSession();
 
     }catch (error){
         response.status(500).send("Error Occured " + error);
@@ -26,6 +31,9 @@ const getAppointment = async (request, response) => {
 
 const addAppointment = async (request, response) => {
     try{
+        const session = await mongoose.startSession();
+        session.startTransaction();
+
         let {time, date, id} = request.body;
         const email = request.email;
 
@@ -43,6 +51,7 @@ const addAppointment = async (request, response) => {
         const appoint = await Appointment.findOne({key})
         
         if (appoint){
+            session.abortTransaction()
             return response.status(404).json({message: "Slot not available!", verify: false})
         }
 
@@ -50,6 +59,7 @@ const addAppointment = async (request, response) => {
             key, doctorId: id, userId: user._id, time, "time":request.body.time, "date":request.body.date
         })
         response.status(200).send("Appointment Scheduled successfulled")
+        session.endSession();
     }catch(error){
         response.status(500).send("Error Occured " + error);
     } 

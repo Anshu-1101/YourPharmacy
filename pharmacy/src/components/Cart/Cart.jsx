@@ -55,6 +55,7 @@ const redirect = () => {
   const [search, finshsearch] = useState(false)
 
   useEffect(()=>{
+    console.log(data.data)
     if (!data.isLoading && data.isSuccess)
       {
         if (!search){
@@ -103,12 +104,13 @@ const redirect = () => {
       <div className="Container">
         {(results)?results.map((item) => (
           <Card
-            _id={item._id}
-            image={item.url}
-            medname={item.name}
-            medcomposition={item.composition}
-            brandname={item.brandname}
-            price={item.price}
+            _id={item.product._id}
+            image={item.product.url}
+            medname={item.product.name}
+            medcomposition={item.product.composition}
+            brandname={item.product.brandname}
+            price={item.product.price}
+            quantity={item.quantity}
           />
         )): 
         <img style={{height:'400px', width:'400px', justifyContent:'center', display:'block', marginLeft: 'auto',

@@ -11,6 +11,7 @@ const doctorRoutes = require('./routes/doctors.js');
 const productRoutes = require('./routes/products.js');
 const authenticationRoutes = require('./routes/authentications.js');
 const appointmentRoutes = require('./routes/appointments.js')
+const adminRoutes = require('./routes/admin.js')
 
 const app = express();
 dotenv.config();
@@ -27,6 +28,7 @@ app.use('/doctors', doctorRoutes);
 app.use('/products', productRoutes);
 app.use('/appointment', appointmentRoutes);
 app.use('/authentications', authenticationRoutes);
+app.use('/admin', adminRoutes);
 
 const PORT = process.env.PORT;
 

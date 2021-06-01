@@ -15,3 +15,5 @@ export const removeFromCart = (id) => axios.post(`${url}/user/removefromcart`, i
 
 export const addAppointment = (id) => axios.post(`${url}/appointment/addappointment`, id)
 export const getAppointment = () => axios.get(`${url}/appointment/getappointment`)
+
+export const adminLogin = (userData) => axios.post(`${url}/admin/login`, userData );

@@ -69,8 +69,8 @@ export const SignIn = () => {
                             <FormButton onClick={handleSubmit}>Login</FormButton>
                             <Text>Are you a Admin? 
                                 <Router>
-                                    <Switch ><Route path="/AdminSignin" component={AdminSignin}/></Switch>
-                                <Link to="/AdminSignin" style= {{cursor:'pointer', color:'green'}}>Click Here</Link></Router></Text>
+                                    <Switch ><Route path="/adminsignin" component={AdminSignin}/></Switch>
+                                <Link to="/adminsignin" style= {{cursor:'pointer', color:'green'}}>Click Here</Link></Router></Text>
                                
                         </Form>
                     </FormContent>

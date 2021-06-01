@@ -135,7 +135,7 @@ const logIn = async (request, response) => {
         const user = await User.findOne({email})
         if (!user)  response.status(404).send("User not found")
         var product = await Promise.all(user.cart.map(async (data)=>{
-          return await Product.findById(data.id)
+          return {"product": await Product.findById(data.id), "quantity":data.quantity}
         }))
         response.status(200).send(product);
     }catch(error){
@@ -151,7 +151,8 @@ const logIn = async (request, response) => {
         if (!user)  response.status(404).send("User not found")
         response.status(200).send({
           "pic" : user.userProfilePic.filePath,
-          "name": user.name
+          "name": user.name,
+          "admin": user.admin
          })
         
     }catch(error){

@@ -7,7 +7,7 @@ export const signup = (inputData) => api.signUp(inputData);
 
 export const logout = ()=> async (dispatch) => api.logOut();
 
-
+export const adminlogin = (inputData) => api.adminLogin(inputData);
 export const verifyUserAction = () => {
   return api.verifyUser();
 }

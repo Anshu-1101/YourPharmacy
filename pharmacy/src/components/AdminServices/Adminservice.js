@@ -1,5 +1,7 @@
-import{React, useState} from 'react';
-import "./style.css";
+ 
+import React from 'react'
+import "./styles.css";
+
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -66,8 +68,7 @@ const Adminservice = () => {
 
 
 
-      <div class="btn"><a href="#">Add new Product</a></div>
-        
+      <div class="btn"><a href="#">Add new Product</a></div>  
     </div>
     </>
      
