@@ -32,6 +32,7 @@ function App() {
           <AuthRoute path="/product" exact component={Product}/>
           <AuthRoute path="/cart" exact component={Cart}/>
           <AuthRoute path="/appointments" exact component={Appointments}/>
+          
 
         </Switch>
         <Footer/>

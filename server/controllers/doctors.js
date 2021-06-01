@@ -4,7 +4,7 @@ const Doctors = require('../models/doctor.js')
 const dotenv = require('dotenv');
 dotenv.config();
 
-const getDoctors = async (request, response) => {
+const getDoctors = async (request,response) => {
     
     try{
         
