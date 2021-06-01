@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -106,11 +107,12 @@ function Cart() {
         }
       </div>
       <div className="Container">
+
       <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
         Checkout
       </button>
   
-      <Modal
+      {/* <Modal
 
        style={{backdropFilter:'blur(5px)'}}
         aria-labelledby="transition-modal-title"
@@ -131,7 +133,7 @@ function Cart() {
                      
           </div>
         </Fade>
-      </Modal>
+      </Modal> */}
       </div>
     </div>
   );

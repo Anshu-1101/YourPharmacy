@@ -4,7 +4,9 @@ import {Container,FormWrap, Icon, FormButton,Text,FormH1,Form,FormInput} from '.
 import { login } from '../../actions/Authentication.js';
 import {useMutation} from 'react-query';
 import { useDispatch, useSelector } from "react-redux";
-
+import {Link} from "react-router-dom";
+import {BrowserRouter as Router, Switch , Route} from 'react-router-dom';
+import AdminSignin from "../AdminSignin/index";
 export const SignIn = () => {
 
 
@@ -65,7 +67,11 @@ export const SignIn = () => {
 
 
                             <FormButton onClick={handleSubmit}>Login</FormButton>
-                            <Text>Forgot password</Text>
+                            <Text>Are you a Admin? 
+                                <Router>
+                                    <Switch ><Route path="/AdminSignin" component={AdminSignin}/></Switch>
+                                <Link to="/AdminSignin" style= {{cursor:'pointer', color:'green'}}>Click Here</Link></Router></Text>
+                               
                         </Form>
                     </FormContent>
                 </FormWrap>

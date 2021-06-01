@@ -87,26 +87,30 @@ const Navbar = () => {
               fontSize: "16px",
               outline: "none",
               border: "none",
+              width:"110px",
+              height:"120px"
             }}
           >
-            <Dropdown.Item
+           <Dropdown.Item
               style={{
                 textDecoration: "none",
                 textAlign: "center",
                 color: "white",
-                padding: "7px",
+                padding: "17px",
+                width:"20px",
+                height:"20px"
               }}
-              to="/orders"
             >
-              My Orders
+              <div style={{padding:0, margin: 0}}>My Orders</div>
             </Dropdown.Item>
-            <br />
             <Dropdown.Item
               style={{
                 textDecoration: "none",
                 textAlign: "center",
                 color: "white",
                 padding: "7px",
+                width:"20px",
+                height:"20px"
               }}
             >
               <div style={{padding:0, margin: 0}} onClick={() => {dispatch(logout()); window.location.reload()}}>Logout</div>
