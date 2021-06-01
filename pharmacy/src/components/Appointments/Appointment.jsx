@@ -1,5 +1,5 @@
 import Card from './Card';
-import SearchBar from '../../components/SearchBar/Search';
+// import SearchBar from '../../components/SearchBar/Search';
 import Fuse from "fuse.js";
 import './Appointment.css';
 import React, { useEffect, useState } from "react";
@@ -55,10 +55,7 @@ function  Doctors() {
     (results&& results.length>0)?
 
     (<div className="page">
-      <SearchBar
-        placeholder="search"
-        onChange={(e) => {finshsearch(true); searchData(e.target.value)}}
-      />
+      
       <div className="Container">
         {results.map(item =>
           <Card

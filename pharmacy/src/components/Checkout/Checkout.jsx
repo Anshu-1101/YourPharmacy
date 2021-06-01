@@ -1,7 +1,6 @@
 import Card from "./Card";
-import SearchBar from "../../components/SearchBar/Search";
 import Fuse from "fuse.js";
-import "./Cart.css";
+import "./Checkout.css";
 import React, { useEffect, useState } from "react";
 import {useQuery} from 'react-query'
 import {getCartAction, removeFromCartAction} from '../../actions/user'
@@ -10,34 +9,27 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import {Link} from "react-router-dom";
-import {BrowserRouter as Router, Switch , Route } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
-import Checkout from '../Checkout/Checkout';
-
+ 
+ 
+ 
+ 
 const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    paper: {
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+  }));
+  
 
 
-function Cart() {
-  let history = useHistory();
-
-const redirect = () => {
-  history.push('/Checkout')
-}
-
-
+const Checkout = () => {
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -96,10 +88,7 @@ const redirect = () => {
 
   return (
     <div className="page">
-      {/* <SearchBar
-        placeholder="search"
-        onChange={(e) => {finshsearch(true); searchData(e.target.value)}}
-      /> */}
+      
       <div className="Container">
         {(results)?results.map((item) => (
           <Card
@@ -112,16 +101,15 @@ const redirect = () => {
           />
         )): 
         <img style={{height:'400px', width:'400px', justifyContent:'center', display:'block', marginLeft: 'auto',
-        marginRight: 'auto'}} src={emptycart}></img>
+        marginRight:'auto'}} src={emptycart}></img>
         }
       </div>
       <div className="Container"> 
-      <Link to="/Checkout" style= {{cursor:'pointer', color:'white', textDecoration:'none', border:'2px solid green',borderRadius:'4px', backgroundColor:'green', margin:'12px', padding:'10px'}}>Checkout</Link>
-      
-       
-                           
-  
-      {/* <Modal
+      <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
+         Proceed Order
+      </button>
+
+      <Modal
 
        style={{backdropFilter:'blur(5px)'}}
         aria-labelledby="transition-modal-title"
@@ -137,15 +125,13 @@ const redirect = () => {
       >
         <Fade in={open}>
           <div  style={{backgroundColor:'#78AB46', width:'300px',height:'auto', borderRadius:'20px'}} className={classes.paper}>
-            <h2 id="transition-modal-title">Your Order will be delivered within 2 days.</h2>
- 
-                     
+            <h2 id="transition-modal-title"> Thankyou for Ordering ! Your Order will be delivered soon.</h2>             
           </div>
         </Fade>
-      </Modal> */}
+      </Modal>
       </div>
     </div>
   );
 }
 
-export default Cart;
+export default Checkout

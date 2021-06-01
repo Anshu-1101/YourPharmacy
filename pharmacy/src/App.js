@@ -13,7 +13,7 @@ import Doctors from "./containers/doctorsPage/Doctors";
 import Product from "./components/Products/Product";
 import Cart from "./components/Cart/Cart";
 import Appointments from "./components/Appointments/Appointment";
-
+import Checkout from "./components/Checkout/Checkout";
 
 const queryClient = new QueryClient()
 
@@ -32,7 +32,7 @@ function App() {
           <AuthRoute path="/product" exact component={Product}/>
           <AuthRoute path="/cart" exact component={Cart}/>
           <AuthRoute path="/appointments" exact component={Appointments}/>
-          
+          <AuthRoute path="/Checkout" component={Checkout}/>
 
         </Switch>
         <Footer/>
