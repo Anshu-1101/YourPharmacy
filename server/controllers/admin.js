@@ -31,7 +31,7 @@ const logIn = async (request, response) => {
       if(!isEqual)
         return response.status(404).json({ message : "Invalid Credentials", verify : false });
                 
-      const token = generateToken(response, email, userDetailsByName._id);
+      const token = await generateToken(response, email, userDetailsByName._id);
       response
         .cookie("token", token, { httpOnly : true })
         .send(email);
@@ -43,5 +43,33 @@ const logIn = async (request, response) => {
     }
   }
 
+  const signUp = async (request, response) => {
 
-module.exports = {logIn};
+    const {email, password, phoneNumber, name} = request.body;
+    
+    try{
+        var userDetails = await User.findOne({ email })
+        if (userDetails){
+            return response.status(400).json({msg: 'Email already in exists!'})
+        }
+        var salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const userDetailsByEmail = await User.create({
+            email,
+            name,
+            password: hashedPassword,
+            phoneNumber,
+        })
+        const token = await generateToken(response, email, userDetailsByEmail._id);
+        response
+            .cookie("token", token, { httpOnly : true })
+            .send(email);
+
+    }catch (error) {
+        console.log(error);
+        response.status(500).json({ message: error });
+    }
+  }
+
+
+module.exports = {logIn, signUp};

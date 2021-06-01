@@ -23,6 +23,6 @@ const userSchema = new mongoose.Schema({
     admin: Boolean
 },{ timestamps: true });
 
-const Appointment = mongoose.model('appointment', userSchema);
+const Admin = mongoose.model('admin', userSchema);
 
-module.exports = Appointment;
+module.exports = Admin;

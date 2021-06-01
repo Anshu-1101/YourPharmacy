@@ -1,5 +1,5 @@
 import React from 'react'
-import "./style.css";
+import "./styles.css";
 
 const Adminservice = () => {
     return (
@@ -9,8 +9,8 @@ const Adminservice = () => {
         </div>
     { }
      <div class="container">
-      <div class="btn"><a href="#">Add New Doctor</a></div>
-      <div class="btn"><a href="#">Add new Product</a></div>
+      <div class="btn"><a href="addnewdoctor">Add New Doctor</a></div>
+      <div class="btn"><a href="addproduct">Add new Product</a></div>
         
     </div>
     </>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { FormContent, FormLabel } from './SigninElements'
 import {Container,FormWrap, Icon, FormButton,Text,FormH1,Form,FormInput} from './SigninElements';
-import { login } from '../../actions/Authentication.js';
+import { adminlogin } from '../../actions/Authentication.js';
 import {useMutation} from 'react-query';
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,7 +19,7 @@ export const AdminSignIn = () => {
 
     const [password, setPassword] = useState('');
     const handlePasswordChange = (e) => {setPassword(e.target.value)} 
-    const loginResource = useMutation((data) => login({...data}))
+    const loginResource = useMutation((data) => adminlogin({...data}))
 
 
     // const dispatch = useDispatch();

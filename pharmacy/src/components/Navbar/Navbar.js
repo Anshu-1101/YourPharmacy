@@ -35,13 +35,14 @@ const Navbar = () => {
   const [button, setButton] = useState(true);
 
   const [name, setName] = useState((Cookies.get('token'))?"":null);
+  const [admin, setAdmin] = useState(false);
   const nav = useQuery("navbar", () => getNavbarAction());
   useEffect(() => {
     
     if (!nav.isLoading && nav.isSuccess)
       {
         setName(nav.data.data.name)
-        // console.log("data:",nav.data.data)
+        setAdmin(nav.data.data.admin)
       }
     showButton();
   }, [nav]);
@@ -88,7 +89,7 @@ const Navbar = () => {
               outline: "none",
               border: "none",
               width:"110px",
-              height:"120px"
+              height:"auto"
             }}
           >
            <Dropdown.Item
@@ -115,6 +116,21 @@ const Navbar = () => {
             >
               <div style={{padding:0, margin: 0}} onClick={() => {dispatch(logout()); window.location.reload()}}>Logout</div>
             </Dropdown.Item>
+            {(admin)?
+              <Dropdown.Item
+              style={{
+                textDecoration: "none",
+                textAlign: "center",
+                color: "white",
+                padding: "7px",
+                width:"20px",
+                height:"50px"
+              }}
+            > 
+              <NavLinks to="/adminservice">Admin</NavLinks>
+            </Dropdown.Item>:
+            <></>
+            }
           </Dropdown.Menu>
         </Dropdown>
         :<>

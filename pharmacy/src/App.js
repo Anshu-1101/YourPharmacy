@@ -13,6 +13,8 @@ import Doctors from "./containers/doctorsPage/Doctors";
 import Product from "./components/Products/Product";
 import Cart from "./components/Cart/Cart";
 import Appointments from "./components/Appointments/Appointment";
+import Adminservice from './components/AdminServices/Adminservice';
+
 
 
 const queryClient = new QueryClient()
@@ -31,6 +33,7 @@ function App() {
           <AuthRoute path="/doctors" exact component={Doctors}/>
           <AuthRoute path="/product" exact component={Product}/>
           <AuthRoute path="/cart" exact component={Cart}/>
+          <AuthRoute path="/adminservice" exact component={Adminservice}/>
           <AuthRoute path="/appointments" exact component={Appointments}/>
           
 

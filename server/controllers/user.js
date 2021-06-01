@@ -151,7 +151,8 @@ const logIn = async (request, response) => {
         if (!user)  response.status(404).send("User not found")
         response.status(200).send({
           "pic" : user.userProfilePic.filePath,
-          "name": user.name
+          "name": user.name,
+          "admin": user.admin
          })
         
     }catch(error){
