@@ -21,7 +21,7 @@ const Admindoc = () => {
           <Icon to="/">Your Pharmacy</Icon>
           <FormContent>
             <Form action="#">
-              <FormH1>Register with Your Pharmacy.</FormH1>
+              {/* <FormH1>Register with Your Pharmacy.</FormH1> */}
                
               <FormInput placeholder="Doctor Name" type="text "required></FormInput>
             
@@ -33,6 +33,7 @@ const Admindoc = () => {
               <FormInput type="email " placeholder="Email" required></FormInput>
               
               <FormInput type="link" placeholder="Photo URL" required></FormInput>
+              <FormInput type="text" placeholder="Fees" required></FormInput>
               
 
               <FormButton type="submit">Update Doctor</FormButton>

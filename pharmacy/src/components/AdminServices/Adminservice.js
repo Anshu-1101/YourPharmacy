@@ -11,7 +11,7 @@ const Adminservice = () => {
 
 <div class="container">
 <div className="heading">
-          <h1 style={{textAlign:'center' }}>Your Pharmacy Administrator Services</h1>
+          <h1 style={{textAlign:'center',  }}>Your Pharmacy Administrator Services</h1>
         </div>
   <div class="box">
     <span></span>
