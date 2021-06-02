@@ -19,6 +19,7 @@ import Checkout from "./components/Checkout/Checkout";
 import Adminservice from './components/AdminServices/Adminservice';
 import Admindoc from './components/AdminAddDoctor/Admindoc';
 import Adminpro from './components/AdminaddProduct/Adminpro';
+import Order from './components/Orders/Orders';
 
  
 
@@ -42,8 +43,8 @@ function App() {
           <AuthRoute path="/appointments" exact component={Appointments}/>
           <AuthRoute path="/Checkout" component={Checkout}/>
           <AuthRoute path="/AdminDoc" component={Admindoc}/>
+          <AuthRoute path="/order" component={Order}/>
           <AuthRoute path="/AdminProducts" component={ Adminpro}/>
-
         </Switch>
         <Footer/>
       </Router>

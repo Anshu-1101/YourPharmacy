@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({image, medname, medcomposition,brandname, price}) => {
+const Card = ({image, medname, medcomposition,brandname, price, quantity, date}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-
+  const cost = parseFloat(price.substr(1))*parseFloat(quantity);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -66,13 +66,15 @@ const Card = ({image, medname, medcomposition,brandname, price}) => {
         }}
       >
         <Fade in={open}>
-          <div  style={{backgroundColor:'#78AB46', width:'300px',height:'auto', borderRadius:'20px'}} className={classes.paper}>
+          <div  style={{backgroundColor:'#78AB46', width:'600px',height:'auto', borderRadius:'20px'}} className={classes.paper}>
             <h2 id="transition-modal-title">
             <div className="Bookname" style={{color:'green'}}>{medname}</div>
-            <div className="Description">{brandname}</div>
-            <div className="description">{medcomposition}</div>
-            <div className="Description">{price}</div></h2>
- 
+            <div className="Description" style={{color: "black"}}>{brandname}</div>
+            <div className="description" style={{color: "black"}}>{medcomposition}</div>
+            <div className="Description" style={{color: "black"}}>Cost: ₹{cost}</div>
+            <div className="Description" style={{color: "black"}}>{date}</div>
+            </h2>
+            
                      
           </div>
         </Fade>

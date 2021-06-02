@@ -102,7 +102,7 @@ const Navbar = () => {
                 height:"20px"
               }}
             >
-              <div style={{padding:0, margin: 0}}>My Orders</div>
+              <NavLinks  style={{padding:0, margin: 0, justifyContent: "center"}} to="/order">My Orders</NavLinks>
             </Dropdown.Item>
             <Dropdown.Item
               style={{
@@ -127,7 +127,7 @@ const Navbar = () => {
                 height:"50px"
               }}
             > 
-              <NavLinks to="/adminservice">Admin</NavLinks>
+              <NavLinks style={{padding:0, margin: 0, justifyContent: "center"}} to="/adminservice">Admin</NavLinks>
             </Dropdown.Item>:
             <></>
             }

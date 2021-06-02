@@ -37,7 +37,9 @@ export const SignIn = () => {
         // dispatch(login({email, password}));
         loginResource.mutate({email, password});
         
+        if(loginResource.isSuccess && !loginResource.isError) window.location.reload();
     }
+
 
     if(loginResource.isSuccess && !loginResource.isError)
     window.location.reload();
@@ -67,10 +69,8 @@ export const SignIn = () => {
 
 
                             <FormButton onClick={handleSubmit}>Login</FormButton>
-                            <Text>Are you a Admin? 
-                                <Router>
-                                    <Switch ><Route path="/adminsignin" component={AdminSignin}/></Switch>
-                                <Link to="/adminsignin" style= {{cursor:'pointer', color:'green'}}>Click Here</Link></Router></Text>
+                            <Text>Not Registered? 
+                                <Link to="/signup" style= {{cursor:'pointer', color:'green'}}>Click Here</Link></Text>
                                
                         </Form>
                     </FormContent>

@@ -17,3 +17,9 @@ export const addAppointment = (id) => axios.post(`${url}/appointment/addappointm
 export const getAppointment = () => axios.get(`${url}/appointment/getappointment`)
 
 export const adminLogin = (userData) => axios.post(`${url}/admin/login`, userData );
+export const addDoctor = (data) => axios.post(`${url}/admin/adddoctors`, data );
+export const addProduct = (data) => axios.post(`${url}/admin/addproduct`, data );
+
+
+export const addOrder = () => axios.post(`${url}/user/addorder`)
+export const getOrder = () => axios.get(`${url}/user/getorder`)

@@ -6,17 +6,21 @@ import React, { useEffect, useState } from "react";
 import {useQuery} from 'react-query'
 import {getProductAction} from '../../actions/products'
 import nodata from './nodata.svg';
+import { getOrder } from "../../api";
 
-function Cart() {
-  const data = useQuery([], async () => await getProductAction());
-
+function Order() {
+  const data = useQuery("get Orders", async () => await getOrder());
+  const [products, setProducts] = useState([])
+  const [search, finshsearch] = useState(false)
   useEffect(()=>{
     if (!data.isLoading && data.isSuccess)
       {
-        // setResult(data.data.data)
-        console.log(data.data.data)
+        if (!search){
+          setProducts(data.data.data)
+          setResult(products)
+        }
       }
-  },[data])
+  }, [data])
    
   const fuse = new Fuse(data, {
     keys: ["name", "brandname", "composition"],
@@ -26,7 +30,8 @@ function Cart() {
 
   const searchData = (pattern) => {
     if (!pattern) {
-      setResult(data);
+      setResult(products);
+      finshsearch(false);
       return;
     }
 
@@ -54,18 +59,20 @@ function Cart() {
    ( <div className="page">
       <SearchBar
         placeholder="search"
-        onChange={(e) => searchData(e.target.value)}
+        onChange={(e) => {finshsearch(true); searchData(e.target.value)}}
       />
       <div className="Container">
         {results.map((item) => (
           <Card
-            image={item.url}
-            medname={item.name}
-            medcomposition={item.composition}
-            brandname={item.brandname}
-            // description={item.description}
-            price={item.price}
-          />
+          _id={item.product._id}
+          image={item.product.url}
+          medname={item.product.name}
+          medcomposition={item.product.composition}
+          brandname={item.product.brandname}
+          price={item.product.price}
+          date={item.date}
+          quantity={item.quantity}
+        />
         ))}
       </div>
     </div>
@@ -78,4 +85,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default Order;

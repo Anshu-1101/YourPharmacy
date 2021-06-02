@@ -40,6 +40,14 @@ const userSchema = new mongoose.Schema({
             default: 1
         }
     }],
+    order : [{
+        id : String,
+        quantity: {
+            type: Number,
+            default: 1
+        },
+        date: String
+    }],
     cartViewed : {
         type : Boolean,
         default : false,

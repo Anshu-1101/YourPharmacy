@@ -24,6 +24,7 @@ const getProducts = async (request, response) => {
 const addProduct = async (request, response) => {
     try{
         const item = request.body;
+        console.log(request.body)
         Product.create({...item})
         // Product.create({
         //     name: item.name, 

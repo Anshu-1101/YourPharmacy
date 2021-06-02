@@ -84,8 +84,7 @@ const logIn = async (request, response) => {
           product.close()
           return
         }
-        
-        var isPresent = false
+
         for(let i=0; i<user.cart.length; i++){
           let data = user.cart[i];
           console.log(data, data.id == id)
@@ -160,6 +159,39 @@ const logIn = async (request, response) => {
     }
   }
 
+  const addOrder = async (request, response) => {
+    try{
+      console.log("add kro")
+      const email = request.email;
+      const user = await User.findOne({email})
+      if (!user) response.status(404).send("User not found")
+      const date = new Date()
+      user.cart.map((item)=>{
+        user.order.push({"id": item.id, "quantity": item.quantity, "date": date})
+      })
+      user.cart = []
+      user.save()
+      console.log("add ho gaya")
+      response.status(200).send(user.order)
+    }catch(error){
+
+    }
+  }
+
+  const getOrder = async (request, response) => {
+    try{
+      const email = request.email;
+        const user = await User.findOne({email})
+        if (!user)  response.status(404).send("User not found")
+        var product = await Promise.all(user.order.map(async (data)=>{
+          return {"product": await Product.findById(data.id), "quantity":data.quantity, "date": data.date}
+        }))
+        response.status(200).send(product);
+    }catch(error){
+      response.status(500).send("request Failed: "+error);
+    }
+  }
+
   const logOut = async (request, response) => {
   
     try {
@@ -171,4 +203,4 @@ const logIn = async (request, response) => {
     }
   }
 
-  module.exports = {logIn, signUp, addtoCart, getCart, getNavbar, removeFromCart, logOut};
+  module.exports = {logIn, signUp, addtoCart, getCart, getNavbar, removeFromCart, logOut, getOrder, addOrder};

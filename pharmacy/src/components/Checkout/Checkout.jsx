@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import { addOrder } from "../../api";
  
  
  
@@ -40,6 +41,12 @@ const Checkout = () => {
 
   const handleClose = () => {
     setOpen(false);
+    window.location.reload()
+  }
+
+  const handleProceed = async () => {
+    await addOrder();
+    handleOpen()
   }
 
   const data = useQuery("cartdata", async () => await getCartAction());
@@ -106,7 +113,7 @@ const Checkout = () => {
         }
       </div>
       <div className="Container"> 
-      <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
+      <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleProceed}>
          Proceed Order
       </button>
 

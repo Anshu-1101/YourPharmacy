@@ -25,6 +25,7 @@ const getDoctors = async (request,response) => {
 const addDoctors = async (request, response) => {
     try{
         const item = request.body;
+        console.log(request.body)
         Doctors.create({...item})
         // Product.create({
         //     name: item.name, 

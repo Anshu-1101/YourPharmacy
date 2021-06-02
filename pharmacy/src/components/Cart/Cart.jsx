@@ -102,7 +102,9 @@ const redirect = () => {
         onChange={(e) => {finshsearch(true); searchData(e.target.value)}}
       /> */}
       <div className="Container">
-        {(results)?results.map((item) => (
+        {(results && results.length>0)?
+        <>
+        {results.map((item) => (
           <Card
             _id={item.product._id}
             image={item.product.url}
@@ -112,39 +114,17 @@ const redirect = () => {
             price={item.product.price}
             quantity={item.quantity}
           />
-        )): 
+        ))}
+        </>
+        : 
         <img style={{height:'400px', width:'400px', justifyContent:'center', display:'block', marginLeft: 'auto',
         marginRight: 'auto'}} src={emptycart}></img>
         }
       </div>
       <div className="Container"> 
-      <Link to="/Checkout" style= {{cursor:'pointer', color:'white', textDecoration:'none', border:'2px solid green',borderRadius:'4px', backgroundColor:'green', margin:'12px', padding:'10px'}}>Checkout</Link>
-      
-       
-                           
-  
-      {/* <Modal
-
-       style={{backdropFilter:'blur(5px)'}}
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div  style={{backgroundColor:'#78AB46', width:'300px',height:'auto', borderRadius:'20px'}} className={classes.paper}>
-            <h2 id="transition-modal-title">Your Order will be delivered within 2 days.</h2>
- 
-                     
-          </div>
-        </Fade>
-      </Modal> */}
+      {(results && results.length>0)?
+      <Link to="/Checkout" style= {{cursor:'pointer', color:'white', textDecoration:'none', border:'2px solid green',borderRadius:'4px', backgroundColor:'green', margin:'12px', padding:'10px'}}>Checkout</Link>:
+      <></>}
       </div>
     </div>
   );
