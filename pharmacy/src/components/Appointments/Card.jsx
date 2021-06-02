@@ -48,11 +48,6 @@ const Card = ({image,name,designation, specialisation, time, date}) => {
           <div className="Description">{specialisation}</div>
           <div className="Description">{time}</div>
           <div className="Description">{date}</div>
-        
-         
-          {/* <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
-Payment Details
-      </button> */}
       
       <Modal
 

@@ -7,7 +7,7 @@ h1, p {
     text-align: center;
      
   }
-  .container {
+  /* .container {
     width: 600px;
     display: flex;
     flex-wrap: wrap;
@@ -113,4 +113,60 @@ h1, p {
       0 0 60px #1eff45;
   }
   
-   
+    */
+
+    *
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: consolas;
+}
+ 
+
+.container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  padding: 40px 0;
+  background: rgb(12,36,0);
+background: linear-gradient(90deg, rgba(12,36,0,1) 9%, rgba(43,184,57,0.7335701598579041) 100%);
+}
+.container .box
+{
+  position: relative;
+  width: 320px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 40px 30px;
+  transition: 0.5s;
+  /* border:2px solid red; */
+  box-shadow: 12px ;
+
+}
+.bttn{
+  padding:12px;
+  margin-top: 14px;
+  background-color:rgb(14, 126, 14) ;
+  color:white;
+  text-decoration: none;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+.bttn:hover{
+  background-color: rgb(12, 87, 12);
+  color:white;
+  text-decoration: none;
+  
+}
+

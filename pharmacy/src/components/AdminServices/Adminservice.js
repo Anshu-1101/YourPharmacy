@@ -1,78 +1,48 @@
  
-import React from 'react'
+import {useState, React} from 'react'
 import "./styles.css";
-
-
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
-
+ 
+import {FormWrap, Icon, FormButton,Text,FormH1,Form,FormInput, FormLabel, FormContent} from "../Register/RegisterElements";
+import {Link} from "react-router-dom";
 const Adminservice = () => {
-  const handleOpen = () => {
-    handleRemove();
-    setOpen(true);
-    
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    window.location.reload();
-  };
+  
     return (
         <>
-        <div className="heading">
+
+<div class="container">
+<div className="heading">
           <h1 style={{textAlign:'center' }}>Your Pharmacy Administrator Services</h1>
         </div>
-    { }
-     <div class="container">
-      <div class="btn"><a href="#">Add New Doctor</a></div>
-      <button class="btn" style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
-         Add New Doctor
-      </button>
+  <div class="box">
+    <span></span>
+    <div class="content">
+      <h2>Doctor Services</h2>
+      <p>You need to add all the details like: Name of Doctor, Designation , Specialisation, Phone Number and Email</p>
+      {/* < Link to= "/AdminDoc " class="bttn"  >Add a Doctor</button> */}
+      <Link to="/AdminDoc" className=" bttn" style= {{cursor:'pointer', color:'white', textDecoration:'none', border:'2px solid green',borderRadius:'4px', backgroundColor:'green', margin:'12px', padding:'10px'}}>Add a Doctor</Link>
+      
+ 
+</div>
+  </div>
 
-      <Modal
+  <div class="box">
+    <span></span>
+    <div class="content">
+      <h2>Products</h2>
+      <p>
+You need to add all the details of Product like: Name of Product, Brand of Product , Quantity, Composition and Price</p>
+      <Link to="/AdminProducts" className=" bttn" style= {{cursor:'pointer', color:'white', textDecoration:'none', border:'2px solid green',borderRadius:'4px', backgroundColor:'green', margin:'12px', padding:'10px'}}>Add new Product</Link>     
+  </div>
+   
+</div>
 
-       style={{backdropFilter:'blur(5px)'}}
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div  style={{backgroundColor:'#78AB46', width:'300px',height:'auto', borderRadius:'20px'}} className={classes.paper}>
-            <h2 id="transition-modal-title"> Thankyou for Ordering ! Your Order will be delivered soon.</h2>             
-          </div>
-        </Fade>
-      </Modal>
+   </div>
 
-
-
-      <div class="btn"><a href="#">Add new Product</a></div>  
-    </div>
+ 
     </>
      
     )
 }
+
 
 export default Adminservice

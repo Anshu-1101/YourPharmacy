@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({_id, image, medname, medcomposition,brandname, price}) => {
+const Card = ({_id, image, medname, medcomposition,brandname, price, quantity}) => {
 
   const cartResource = useMutation((data) => removeFromCartAction({...data}))
   const classes = useStyles();
@@ -37,6 +37,7 @@ const Card = ({_id, image, medname, medcomposition,brandname, price}) => {
     setOpen(true);
     
   };
+  const cost = parseFloat(price.substr(1))*parseFloat(quantity);
 
   const handleClose = () => {
     setOpen(false);
@@ -56,7 +57,9 @@ const Card = ({_id, image, medname, medcomposition,brandname, price}) => {
           </div>
           <div className="description">{medcomposition}</div>
           <div className="Description">{brandname}</div>
-          <div className="Description">{price}</div>
+          
+          <div className="Description">Quantity: {quantity}</div>
+          <div className="Description">Cost: ₹{cost}</div>
 {/*          
           <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
         Remove Item
