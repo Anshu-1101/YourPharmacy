@@ -40,7 +40,7 @@ const Adminpro = () => {
           brandname,
           url,
           quantity,
-          price,
+          "price": "₹"+price,
         }
       );
       if(productResouce.isSuccess && !productResouce.isError) window.location.reload();
