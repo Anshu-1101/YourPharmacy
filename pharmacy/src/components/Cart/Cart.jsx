@@ -106,7 +106,7 @@ const redirect = () => {
         <>
         {results.map((item) => (
           <Card
-            _id={item.product._id}
+            id={item.product.id}
             image={item.product.url}
             medname={item.product.name}
             medcomposition={item.product.composition}

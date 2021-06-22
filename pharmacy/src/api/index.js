@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-const url = 'http://localhost:5000'
+const url = 'http://localhost:8000'
 export const logIn = (userData) => axios.post(`${url}/user/login`, userData );
 export const signUp = (userData) => axios.post(`${url}/user/signup`, userData);
-export const logOut = () => axios.get(`${url}/user/logout`);
+export const logOut = () => axios.delete(`${url}/user/logout`);
 export const getNavbar = () => axios.get(`${url}/user/getnavbar`);
 export const verifyUser = () => (axios.get(`${url}/authentications/verify`))
 export const getProducts = () => axios.get(`${url}/products/getproducts`)

@@ -22,15 +22,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({_id, image, medname, medcomposition,brandname, price, quantity}) => {
+const Card = ({id, image, medname, medcomposition,brandname, price, quantity}) => {
 
   const cartResource = useMutation((data) => removeFromCartAction({...data}))
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
   const handleRemove = () => {
-    console.log(_id)
-    cartResource.mutate({'id': _id});
+    // console.log(_id)
+    cartResource.mutate({'id': id});
   }
   const handleOpen = () => {
     handleRemove();
@@ -43,7 +43,7 @@ const Card = ({_id, image, medname, medcomposition,brandname, price, quantity}) 
     window.location.reload();
   };
 
-  const cost = parseFloat(price.substr(1))*parseFloat(quantity);
+  const cost = parseFloat(price)*parseFloat(quantity);
 
  
     return (

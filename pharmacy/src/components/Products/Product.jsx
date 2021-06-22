@@ -62,7 +62,7 @@ function Product() {
         {(results)?results.map((item) => {
           return (
           <Card
-            _id = {item._id}
+            id = {item.id}
             image={item.url}
             medname={item.name}
             medcomposition={item.composition}

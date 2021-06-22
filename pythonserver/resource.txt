@@ -1,0 +1,2 @@
+https://www.tutlinks.com/fastapi-with-postgresql-crud-async/
+https://ahmed-nafies.medium.com/tutorial-fastapi-sqlalchemy-postgresql-alembic-and-docker-part-2-asynchronous-version-8a339ce97e6d

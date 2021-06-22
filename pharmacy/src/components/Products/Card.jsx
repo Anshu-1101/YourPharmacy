@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({_id, image, medname, medcomposition,brandname, price, addToCart}) => {
+const Card = ({id, image, medname, medcomposition,brandname, price, addToCart}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const cartResource = useMutation((data) => addToCartAction({...data}))
@@ -34,8 +34,8 @@ const Card = ({_id, image, medname, medcomposition,brandname, price, addToCart})
   };
   
   const handleAdd = () => {
-    console.log(_id)
-    cartResource.mutate({"id": _id});
+    console.log(id)
+    cartResource.mutate({"id": id});
     handleOpen();
   };
 

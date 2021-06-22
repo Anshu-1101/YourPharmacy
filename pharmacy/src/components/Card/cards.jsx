@@ -79,12 +79,11 @@ const Card = ({id, image, name, designation,specialisation, location, fee}) => {
         </div>
         <div className="ColDetail" style={{paddingLeft:'30px', paddingTop:'20px'}}>
           <div className="Header">
-            <div className="Bookname" style={{color:'green'}}>{name}, {specialisation}</div>
+            <div className="Bookname" style={{color:'green'}}>{name}, {designation}</div>
           </div>
-          
-          <div className="Description">{designation}</div>
+          <div className="Description">{specialisation}</div>
           <div className="Description">{location}</div>
-          <div className="Description">{fee}</div>
+          <div className="Description">₹{fee}</div>
          
           <button style={{color:'#fff', backgroundColor:'#78AB46', padding:'8px', outline:'none', cursor:'pointer', borderRadius:'10px'}} type="button" onClick={handleOpen}>
         Book Appointment
